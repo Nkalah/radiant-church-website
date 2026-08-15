@@ -4,7 +4,7 @@ import { MapPin, ArrowRight, Users, Church, Heart, Globe } from "lucide-react";
 import { assemblies } from "./assemblies-data";
 
 const stats = [
-  { label: "Assemblies", value: "5", icon: Church },
+  { label: "Assemblies", value: "6", icon: Church },
   { label: "Members", value: "500+", icon: Users },
   { label: "Ministries", value: "20+", icon: Heart },
   { label: "Cities Reached", value: "5+", icon: Globe },

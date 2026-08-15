@@ -24,14 +24,15 @@ export default function Home() {
   const { data: testimonialsData } = useListTestimonials();
   const testimonials = testimonialsData ?? [
     { id: 1, name: "Reverend N.Jecheche", location: "Philadephia, Haryana", quote: "This church changed my life. The community and teaching here is unlike anything I have ever experienced.", avatarUrl: "rev.jpg" },
-    { id: 2, name: "Minister Peter", location: "Koinonia, Greater Noida", quote: "I found true fellowship and purpose here. The Word is preached with power and conviction every single week.", avatarUrl: "https://cdn-icons-png.flaticon.com/128/3177/3177440.png" },
-    { id: 3, name: "Minister Praise", location: "Rehoboth, Chandigarh", quote: "From the moment I walked in, I felt at home. God is truly moving in this place in remarkable ways.",avatarUrl: "https://cdn-icons-png.flaticon.com/128/3177/3177440.png"},
+    { id: 2, name: "Minister Peter", location: "Koinonia, Greater Noida", quote: "I found true fellowship and purpose here. The Word is preached with power and conviction every single week.", avatarUrl: "peter.jpg" },
+    { id: 3, name: "Minister Praise", location: "Rehoboth, Chandigarh", quote: "From the moment I walked in, I felt at home. God is truly moving in this place in remarkable ways.",avatarUrl: "praise.jpg"},
+    { id: 4, name: "Minister Shekainah", location: "Rehoboth, Chandigarh", quote: "Serving in  the house of the Lord is smomething that has changed the my life physically and spiritually.",avatarUrl: "sheky.jpg"},
   ];
   const { data: eventsData } = useListEvents({ limit: 3, upcoming: true });
   const events = eventsData ?? [
-    { id: 1, title: "Sunday Worship Service", date: "Every Sunday", location: "Join us at your designated assembly location. Services begin at 10:00 AM.", category: "Worship", imageUrl: "https://scontent.fluh1-4.fna.fbcdn.net/v/t51.82787-15/706003212_17875792023607362_4570928334510791557_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=xEVkTT1Mo3QQ7kNvwEWOoNj&_nc_oc=AdrTgNN9J3oEz7mjwrGneAQkX0JDUkcirFhtzxRxBRq3sACEpC-ytiALNsWl5s1PKfBfckNrjSMmCBc2wO5bSMQA&_nc_zt=23&_nc_ht=scontent.fluh1-4.fna&_nc_gid=VfOryRHPYOtf-_BXYHlzlA&_nc_ss=7b2a8&oh=00_Af_atQmPAMowqfFBbkIuTPLUGYi9z3-s5i04DpY5SHBj4g&oe=6A26A216" },
-    { id: 2, title: "Youth Conference", date: "June 11-14, 2026", location: "Fellowship Hall", category: "Youth", imageUrl: "https://scontent.fluh1-2.fna.fbcdn.net/v/t51.82787-15/671074983_17869827549607362_5068186855750322060_n.webp?stp=dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=hZjBSxTe2GkQ7kNvwEOyqDp&_nc_oc=Adp3B63k6DH-zwwivdtO0N1CD9AVmGeW-sfSWkgI5gko0QwZoGG58t84aKxs1m-Cui0aJvCX1f6xasjktQR3UsGY&_nc_zt=23&_nc_ht=scontent.fluh1-2.fna&_nc_gid=PnNyFl13MTuS7Kxa57r-fw&_nc_ss=7b2a8&oh=00_Af8R996DJJL01CfrScGq-tS87qtWBDxUmleTKbLIVHx6lg&oe=6A26AFA9" },
-    { id: 3, title: "Community Outreach", date: "TBA", location: "Jalandar", category: "Missions", imageUrl: "https://i.pinimg.com/736x/96/7f/c2/967fc2a2faf70ef08fc5744831e023cb.jpg" },
+    { id: 1, title: "Sunday Worship Service", date: "Every Sunday", location: "Join us at your designated assembly location. Services begin at 10:00 AM.", category: "Worship", imageUrl: "church1.jpg" },
+    { id: 2, title: "Youth Conference", date: "June 11-14, 2026", location: "Fellowship Hall", category: "Youth", imageUrl: "conf.jpg" },
+    { id: 3, title: "Community Outreach", date: "TBA", location: "Jalandar", category: "Missions", imageUrl: "reho09.jpg" },
   ];
   
   const subscribeNewsletter = useSubscribeNewsletter();
@@ -70,7 +71,7 @@ export default function Home() {
       <section className="relative h-screen w-full flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://scontent.fluh1-2.fna.fbcdn.net/v/t39.30808-6/700708516_1426973766123852_2211573182973582220_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x2048&ctp=s2048x2048&_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=7PPrrX4ACccQ7kNvwGx4DF9&_nc_oc=AdqaL3BRmKPdhpFdHVzstrC1w52JPGlAxxRaaRtVQ5d8Y2LetmFwsR6ewXg6UaJUFZj-BpQbnB7QSJs7e_s7zjSY&_nc_zt=23&_nc_ht=scontent.fluh1-2.fna&_nc_gid=p0RWZwvkyRm3HHyYGWXvbQ&_nc_ss=7b2a8&oh=00_Af_WlUImAd6K2Kl_FA3-NzLAe29H9CbIspc2hZaoMNumjw&oe=6A317702"
+            src="afm.jpg"
             alt="Hero background" 
             className="w-full h-full object-cover opacity-80 dark:opacity-40 mix-blend-overlay"
           />
@@ -103,7 +104,7 @@ export default function Home() {
           <div className="flex-1 w-full relative">
             <div className="aspect-[4/5] overflow-hidden relative">
               <img 
-                src="rev.jpg" 
+                src="bishop.jpg" 
                 alt="Latest Sermon" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
@@ -236,10 +237,10 @@ export default function Home() {
 
     <div className="grid grid-cols-2 gap-4 md:sticky md:top-32">
       <div className="aspect-square bg-background/10 overflow-hidden">
-        <img src="https://t4.ftcdn.net/jpg/01/44/92/33/240_F_144923319_EZRBfoQiVDqXCBPSuEs7vUPIRRmmoBVs.jpg" alt="Mission" className="w-full h-full object-cover opacity-80 mix-blend-luminosity" />
+        <img src="bible.jpg" alt="Mission" className="w-full h-full object-cover opacity-80 mix-blend-luminosity" />
       </div>
       <div className="aspect-square bg-background/10 mt-12 overflow-hidden">
-        <img src="https://i.pinimg.com/1200x/44/d1/b0/44d1b0503b166277bcb373af77c2655c.jpg" />
+        <img src="conf3.jpg" />
       </div>
     </div>
   </div>
@@ -251,8 +252,8 @@ export default function Home() {
           <h2 className="font-serif text-4xl md:text-6xl">Lives Transformed</h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {testimonials?.slice(0,3).map((testimonial, i) => (
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-12">
+          {testimonials?.slice(0,4).map((testimonial, i) => (
             <div key={testimonial.id} className="text-center p-8 border border-border bg-card">
               <div className="w-20 h-20 mx-auto rounded-full overflow-hidden mb-6 border-2 border-primary/20">
                 <img src={testimonial.avatarUrl || `/images/avatar-${i + 1}.png`} alt={testimonial.name} className="w-full h-full object-cover grayscale" />

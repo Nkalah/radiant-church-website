@@ -55,7 +55,7 @@ export const assemblies: Assembly[] = [
         name: "Minister Chiwara",
         position: "Preceeding Minister",
         bio: "Minister carries a deep burden for revival and leads the assembly with prophetic vision and pastoral care.",
-        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
+        photo: "/abide.jpg",
       },
     ],
     serviceTimes: [
@@ -68,8 +68,7 @@ export const assemblies: Assembly[] = [
       { name: "Youth Ministry", description: "Igniting passion for God in the hearts of young people.", icon: "Users" },
       { name: "Women's Fellowship", description: "A sisterhood rooted in prayer and the Word.", icon: "Heart" },
       { name: "Men's Fellowship", description: "Iron sharpening iron for the Kingdom.", icon: "Shield" },
-      { name: "Children's Ministry", description: "Nurturing young hearts to love Jesus.", icon: "Star" },
-      { name: "Choir", description: "Ministering through song and worship.", icon: "Music" },
+      { name: "Praise Team", description: "Ministering through song and worship.", icon: "Music" },
       { name: "Evangelism Team", description: "Reaching the lost with the message of salvation.", icon: "Globe" },
     ],
     gallery: [
@@ -98,14 +97,9 @@ export const assemblies: Assembly[] = [
         name: "Minister Bertha",
         position: "Preceeding Minister",
         bio: "Minster  has served the Lord faithfully for over a decade, leading with a heart for evangelism and discipleship.",
-        photo: "/phila03.jpg",
+        photo: "/bertha.jpg",
       },
-      {
-        name: "Nkosilomusa Jecheche",
-        position: "Reverend",
-        bio: "Elder Samuel oversees the pastoral care ministry and mentors young believers in the faith.",
-        photo: "/rev.jpg",
-      },
+      
     ],
     serviceTimes: [
       { day: "Sunday", name: "Morning Worship", time: "10:00 AM" },
@@ -159,8 +153,7 @@ export const assemblies: Assembly[] = [
       { name: "Youth Ministry", description: "Transforming young lives through the power of the Gospel.", icon: "Users" },
       { name: "Women's Fellowship", description: "Women walking in grace, truth, and purpose.", icon: "Heart" },
       { name: "Men's Fellowship", description: "Men anchored in faith and servant leadership.", icon: "Shield" },
-      { name: "Children's Ministry", description: "Building strong foundations of faith from childhood.", icon: "Star" },
-      { name: "Choir", description: "Exalting the name of Jesus through anointed music.", icon: "Music" },
+      { name: "Praise Team", description: "Exalting the name of Jesus through anointed music.", icon: "Music" },
       { name: "Evangelism Team", description: "Going into every corner with the Good News.", icon: "Globe" },
     ],
     gallery: [
@@ -188,7 +181,7 @@ export const assemblies: Assembly[] = [
         name: "Nyashadzashe Chibwe ",
         position: "Precceeding Minister",
         bio: "Pastor Andrew is a passionate evangelist who believes God wants to pour out His Spirit on all flesh in this generation.",
-        photo: "/reho03.jpg",
+        photo: "/nyasha.jpg",
       },
     ],
     serviceTimes: [
@@ -201,8 +194,7 @@ export const assemblies: Assembly[] = [
       { name: "Youth Ministry", description: "Youth ablaze with the fire of the Holy Spirit.", icon: "Users" },
       { name: "Women's Fellowship", description: "Women of faith lifting one another higher.", icon: "Heart" },
       { name: "Men's Fellowship", description: "Men rooted in the Word and active in service.", icon: "Shield" },
-      { name: "Children's Ministry", description: "Sowing seeds of faith in the hearts of children.", icon: "Star" },
-      { name: "Choir", description: "Music that glorifies God and stirs the Spirit.", icon: "Music" },
+      { name: "Praise Team", description: "Music that glorifies God and stirs the Spirit.", icon: "Music" },
       { name: "Evangelism Team", description: "Fulfilling the Great Commission one soul at a time.", icon: "Globe" },
     ],
     gallery: [
@@ -230,7 +222,7 @@ export const assemblies: Assembly[] = [
         name: "Faith ",
         position: "Preceeding Minister",
         bio: "Minister brings a heart of compassion and a gift for building community wherever he ministers.",
-        photo: "/ko06.jpg",
+        photo: "/faith.jpg",
       },
     ],
     serviceTimes: [
@@ -243,8 +235,51 @@ export const assemblies: Assembly[] = [
       { name: "Youth Ministry", description: "A generation on fire for God.", icon: "Users" },
       { name: "Women's Fellowship", description: "Virtuous women growing together in Christ.", icon: "Heart" },
       { name: "Men's Fellowship", description: "Kingdom men standing firm in faith.", icon: "Shield" },
-      { name: "Children's Ministry", description: "Shaping the faith of tomorrow's leaders today.", icon: "Star" },
-      { name: "Choir", description: "Songs of praise that usher in God's presence.", icon: "Music" },
+      { name: "Praise Team", description: "Songs of praise that usher in God's presence.", icon: "Music" },
+      { name: "Evangelism Team", description: "Sharing the love of Christ in our communities.", icon: "Globe" },
+    ],
+    gallery: [
+      "/ko.jpg",
+      "/ko1.jpg",
+      "/ko07.jpg",
+      "/ko05.jpg",
+    ],
+  },
+  
+
+
+{
+    id: "6",
+    slug: "Bethel;",
+    name: "Bethel Assembly",
+    tagline: "House Of God",
+    description: "Bethel acob slept at this location while fleeing from his brother Esau and saw a vision of a ladder or stairway reaching to heaven with angels ascending and descending. He named the place Bethel because he felt it was the gate of heaven.",
+    location: "Limda, Waghodia, Vadodara, Gujarat, India",
+    address: " Vadodara , near Parul University Fusion cinema",
+    phone: ". +91 81417 66854",
+    email: "bethel@afmindia.org",
+    established: "18 July 2026",
+    heroImage: "/bethel.jpeg",
+    cardImage: "/bethel.jpeg",
+    leaders: [
+      {
+        name: "T.Nkala ",
+        position: "Preceeding Minister",
+        bio: "Minister brings a heart of compassion and a gift for building community wherever he ministers.",
+        photo: "/bethel.jpeg",
+      },
+    ],
+    serviceTimes: [
+      { day: "Sunday", name: "Morning Worship", time: "10:00 AM" },
+      { day: "Wednesday", name: "Midweek Service", time: "18:30 PM" },
+      { day: "Friday", name: "Bible Study", time: "18:00 PM" },
+      { day: "Saturday", name: "Youth Fellowship", time: "16:00 PM" },
+    ],
+    ministries: [
+      { name: "Youth Ministry", description: "A generation on fire for God.", icon: "Users" },
+      { name: "Women's Fellowship", description: "Virtuous women growing together in Christ.", icon: "Heart" },
+      { name: "Men's Fellowship", description: "Kingdom men standing firm in faith.", icon: "Shield" },
+      { name: "Praise Team", description: "Songs of praise that usher in God's presence.", icon: "Music" },
       { name: "Evangelism Team", description: "Sharing the love of Christ in our communities.", icon: "Globe" },
     ],
     gallery: [

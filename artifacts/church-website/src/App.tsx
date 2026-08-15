@@ -2,7 +2,7 @@ import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-
+import MinisterProfile from "./pages/MinisterProfile"; 
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Layout } from "@/components/Layout";
 
@@ -39,6 +39,7 @@ function Router() {
         <Route path="/sermons/:id" component={SermonDetail} />
         <Route path="/live" component={Live} />
         <Route path="/ministries" component={Ministries} />
+        <Route path="/ministers/:id" component={MinisterProfile} />
         <Route path="/events" component={Events} />
         <Route path="/events/:id" component={EventDetail} />
         <Route path="/prayer" component={Prayer} />
