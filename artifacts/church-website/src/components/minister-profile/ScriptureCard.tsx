@@ -28,3 +28,5 @@ export function ScriptureCard({ scripture, reference }: ScriptureCardProps) {
     </motion.div>
   );
 }
+
+

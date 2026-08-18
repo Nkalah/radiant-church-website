@@ -102,11 +102,35 @@ export const ListEventsResponseItem = zod.object({
   "title": zod.string(),
   "date": zod.string(),
   "time": zod.string(),
+  "endTime": zod.string().nullish(),
   "location": zod.string(),
+  "address": zod.string().nullish(),
+  "mapUrl": zod.string().nullish(),
+  "parkingInfo": zod.string().nullish(),
   "category": zod.string(),
   "description": zod.string().nullish(),
   "imageUrl": zod.string().nullish(),
-  "registrationUrl": zod.string().nullish()
+  "organizer": zod.string().nullish(),
+  "audience": zod.string().nullish(),
+  "cost": zod.string().nullish(),
+  "whatToExpect": zod.array(zod.string()).nullish(),
+  "schedule": zod.array(zod.object({
+  "time": zod.string(),
+  "title": zod.string(),
+  "description": zod.string().nullish()
+})).nullish(),
+  "speakerName": zod.string().nullish(),
+  "speakerRole": zod.string().nullish(),
+  "speakerImageUrl": zod.string().nullish(),
+  "speakerBio": zod.string().nullish(),
+  "speakerContact": zod.string().nullish(),
+  "registrationRequired": zod.boolean().optional(),
+  "registrationUrl": zod.string().nullish(),
+  "registrationDeadline": zod.string().nullish(),
+  "availableSeats": zod.number().nullish(),
+  "contactPhone": zod.string().nullish(),
+  "contactEmail": zod.string().nullish(),
+  "contactWhatsapp": zod.string().nullish()
 })
 export const ListEventsResponse = zod.array(ListEventsResponseItem)
 
@@ -123,11 +147,35 @@ export const GetEventResponse = zod.object({
   "title": zod.string(),
   "date": zod.string(),
   "time": zod.string(),
+  "endTime": zod.string().nullish(),
   "location": zod.string(),
+  "address": zod.string().nullish(),
+  "mapUrl": zod.string().nullish(),
+  "parkingInfo": zod.string().nullish(),
   "category": zod.string(),
   "description": zod.string().nullish(),
   "imageUrl": zod.string().nullish(),
-  "registrationUrl": zod.string().nullish()
+  "organizer": zod.string().nullish(),
+  "audience": zod.string().nullish(),
+  "cost": zod.string().nullish(),
+  "whatToExpect": zod.array(zod.string()).nullish(),
+  "schedule": zod.array(zod.object({
+  "time": zod.string(),
+  "title": zod.string(),
+  "description": zod.string().nullish()
+})).nullish(),
+  "speakerName": zod.string().nullish(),
+  "speakerRole": zod.string().nullish(),
+  "speakerImageUrl": zod.string().nullish(),
+  "speakerBio": zod.string().nullish(),
+  "speakerContact": zod.string().nullish(),
+  "registrationRequired": zod.boolean().optional(),
+  "registrationUrl": zod.string().nullish(),
+  "registrationDeadline": zod.string().nullish(),
+  "availableSeats": zod.number().nullish(),
+  "contactPhone": zod.string().nullish(),
+  "contactEmail": zod.string().nullish(),
+  "contactWhatsapp": zod.string().nullish()
 })
 
 

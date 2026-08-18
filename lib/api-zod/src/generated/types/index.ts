@@ -11,6 +11,7 @@ export * from './churchStats';
 export * from './contactInput';
 export * from './contactResponse';
 export * from './event';
+export * from './eventScheduleItem';
 export * from './healthStatus';
 export * from './listBlogPostsParams';
 export * from './listEventsParams';

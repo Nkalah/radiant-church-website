@@ -345,17 +345,68 @@ components:
           type: string
         time:
           type: string
+        endTime:
+          type: ["string", "null"]
         location:
           type: string
+        address:
+          type: ["string", "null"]
+        mapUrl:
+          type: ["string", "null"]
+        parkingInfo:
+          type: ["string", "null"]
         category:
           type: string
         description:
           type: ["string", "null"]
         imageUrl:
           type: ["string", "null"]
+        organizer:
+          type: ["string", "null"]
+        audience:
+          type: ["string", "null"]
+        cost:
+          type: ["string", "null"]
+        whatToExpect:
+          type: ["array", "null"]
+          items:
+            type: string
+        schedule:
+          type: ["array", "null"]
+          items:
+            type: object
+            required: [time, title]
+            properties:
+              time:
+                type: string
+              title:
+                type: string
+              description:
+                type: ["string", "null"]
+        speakerName:
+          type: ["string", "null"]
+        speakerRole:
+          type: ["string", "null"]
+        speakerImageUrl:
+          type: ["string", "null"]
+        speakerBio:
+          type: ["string", "null"]
+        speakerContact:
+          type: ["string", "null"]
+        registrationRequired:
+          type: boolean
         registrationUrl:
           type: ["string", "null"]
-
+        registrationDeadline:
+          type: ["string", "null"]
+        availableSeats:
+          type: ["integer", "null"]
+        contactPhone:
+          type: ["string", "null"]
+        contactEmail:
+          type: ["string", "null"]
+        contactWhatsapp:
+          type: ["string", "null"]
     PrayerInput:
       type: object
       required: [name, request]

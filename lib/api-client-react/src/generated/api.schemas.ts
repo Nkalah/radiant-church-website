@@ -29,19 +29,65 @@ export interface Sermon {
   featured?: boolean;
 }
 
+export type EventScheduleItem = {
+  time: string;
+  title: string;
+  /** @nullable */
+  description?: string | null;
+};
+
 export interface Event {
   id: number;
   title: string;
   date: string;
   time: string;
+  /** @nullable */
+  endTime?: string | null;
   location: string;
+  /** @nullable */
+  address?: string | null;
+  /** @nullable */
+  mapUrl?: string | null;
+  /** @nullable */
+  parkingInfo?: string | null;
   category: string;
   /** @nullable */
   description?: string | null;
   /** @nullable */
   imageUrl?: string | null;
   /** @nullable */
+  organizer?: string | null;
+  /** @nullable */
+  audience?: string | null;
+  /** @nullable */
+  cost?: string | null;
+  /** @nullable */
+  whatToExpect?: string[] | null;
+  /** @nullable */
+  schedule?: EventScheduleItem[] | null;
+  /** @nullable */
+  speakerName?: string | null;
+  /** @nullable */
+  speakerRole?: string | null;
+  /** @nullable */
+  speakerImageUrl?: string | null;
+  /** @nullable */
+  speakerBio?: string | null;
+  /** @nullable */
+  speakerContact?: string | null;
+  registrationRequired?: boolean;
+  /** @nullable */
   registrationUrl?: string | null;
+  /** @nullable */
+  registrationDeadline?: string | null;
+  /** @nullable */
+  availableSeats?: number | null;
+  /** @nullable */
+  contactPhone?: string | null;
+  /** @nullable */
+  contactEmail?: string | null;
+  /** @nullable */
+  contactWhatsapp?: string | null;
 }
 
 export interface PrayerInput {
