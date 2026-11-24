@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { PageHero } from "../components/PageHero";
 
 const amounts = [50, 100, 250, 500, 1000];
 
@@ -19,31 +20,17 @@ export default function Giving() {
   }
 
   return (
-    <div className="pt-32 pb-32 min-h-screen bg-background text-foreground">
-      <div className="max-w-6xl mx-auto px-6">
-
-        {/* Header */}
-        <div className="text-center mb-16">
-          <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">Generosity</span>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-5xl md:text-7xl mb-4 leading-tight"
-          >
-            Partner with the <br /><span className="italic text-muted-foreground">Vision</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-lg font-light leading-relaxed max-w-lg mx-auto"
-          >
-            Your generosity fuels our mission to bring hope and transformation to our city and beyond.
-          </motion.p>
-        </div>
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        align="center"
+        eyebrow="Generosity"
+        title={<>Partner with the <span className="text-afm-red">Vision</span></>}
+        description="Your generosity fuels our mission to bring hope and transformation to our city and beyond."
+      />
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-border">
+        <div className="grid grid-cols-1 overflow-hidden rounded-2xl border border-border bg-card shadow-sm lg:grid-cols-2">
 
           {/* Left — Amount Selector */}
           <motion.div
@@ -76,7 +63,7 @@ export default function Giving() {
                   <button
                     key={a}
                     onClick={() => setAmount(a)}
-                    className={`py-4 border transition-all font-serif text-2xl ${
+                    className={`rounded-2xl py-4 border transition-all font-serif text-2xl ${
                       amount === a
                         ? "border-primary bg-primary/10 text-primary"
                         : "border-border text-foreground hover:border-primary/50"
@@ -87,7 +74,7 @@ export default function Giving() {
                 ))}
                 <button
                   onClick={() => setAmount("custom")}
-                  className={`py-4 border transition-all text-xs tracking-widest uppercase font-medium ${
+                  className={`rounded-2xl py-4 border transition-all text-xs tracking-widest uppercase font-medium ${
                     amount === "custom"
                       ? "border-primary bg-primary/10 text-primary"
                       : "border-border text-muted-foreground hover:border-primary/50"
@@ -103,7 +90,7 @@ export default function Giving() {
                   <input
                     type="number"
                     placeholder="0.00"
-                    className="w-full h-16 bg-background border border-border pl-12 pr-6 font-serif text-2xl focus:outline-none focus:border-primary"
+                    className="w-full h-16 rounded-2xl bg-afm-white border border-border pl-12 pr-6 font-serif text-2xl focus:outline-none focus:ring-2 focus:ring-afm-gold"
                   />
                 </div>
               )}
@@ -114,7 +101,7 @@ export default function Giving() {
                 <div className="flex gap-3">
                   <button
                     onClick={() => setMethod("card")}
-                    className={`flex-1 py-3 border text-xs tracking-widest uppercase font-medium transition-all ${
+                    className={`flex-1 rounded-full py-3 border text-xs tracking-widest uppercase font-medium transition-all ${
                       method === "card"
                         ? "border-primary bg-primary/10 text-primary"
                         : "border-border text-muted-foreground hover:border-primary/50"
@@ -124,7 +111,7 @@ export default function Giving() {
                   </button>
                   <button
                     onClick={() => setMethod("upi")}
-                    className={`flex-1 py-3 border text-xs tracking-widest uppercase font-medium transition-all ${
+                    className={`flex-1 rounded-full py-3 border text-xs tracking-widest uppercase font-medium transition-all ${
                       method === "upi"
                         ? "border-primary bg-primary/10 text-primary"
                         : "border-border text-muted-foreground hover:border-primary/50"
@@ -137,7 +124,7 @@ export default function Giving() {
 
               {method === "card" && (
                 <div className="mt-8 space-y-4">
-                  <Button className="w-full h-14 rounded-none text-sm tracking-widest uppercase font-medium">
+                  <Button className="w-full h-14 text-sm tracking-widest uppercase font-medium">
                     Continue to Payment
                   </Button>
                   <p className="text-center text-xs text-muted-foreground font-light">
@@ -147,7 +134,7 @@ export default function Giving() {
               )}
 
               {method === "upi" && (
-                <div className="mt-8 p-4 border border-primary/20 bg-primary/5">
+                <div className="mt-8 rounded-2xl p-4 border border-primary/20 bg-primary/5">
                   <p className="text-xs text-primary font-medium tracking-widest uppercase text-center">
                     ← Scan the QR code to give instantly
                   </p>
@@ -161,7 +148,7 @@ export default function Giving() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-card flex flex-col"
+            className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm flex flex-col"
           >
             {method === "upi" ? (
               /* UPI QR Panel */
@@ -178,7 +165,7 @@ export default function Giving() {
                   <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-primary"></div>
                   <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-primary"></div>
 
-                  <div className="w-60 h-60 bg-white p-3">
+                  <div className="w-60 h-60 rounded-2xl bg-afm-white p-3 shadow-sm">
                     <img
                       src="/upi-qr.jpeg"
                       alt="UPI QR Code — harrychimbota@oksbi"
@@ -192,7 +179,7 @@ export default function Giving() {
                 </p>
 
                 {/* UPI ID row */}
-                <div className="w-full border border-border bg-background px-6 py-4 flex items-center justify-between gap-4">
+                <div className="w-full rounded-2xl border border-border bg-afm-off-white px-6 py-4 flex items-center justify-between gap-4">
                   <div className="text-left">
                     <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">UPI ID</p>
                     <p className="font-mono text-sm text-foreground">{upiId}</p>
@@ -201,7 +188,7 @@ export default function Giving() {
                     onClick={handleCopy}
                     className={`text-xs uppercase tracking-widest border px-4 py-2 transition-all ${
                       copied
-                        ? "border-green-500 text-green-500 bg-green-500/10"
+                        ? "border-afm-gold text-afm-navy bg-afm-gold/10"
                         : "border-primary/30 text-primary hover:bg-primary/10"
                     }`}
                   >
@@ -219,14 +206,14 @@ export default function Giving() {
                 <img
                   src="https://media.istockphoto.com/id/1462151150/photo/hands-growing-a-young-plant.jpg?s=612x612&w=0&k=20&c=bOneAk_eKW0M1D-qdgFEUrnFB-WQAnwwIsmttZuZ0M0="
                   alt="Giving impact"
-                  className="absolute inset-0 w-full h-full object-cover grayscale"
+                  className="absolute inset-0 w-full h-full object-cover grayscale-0 md:grayscale"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-afm-navy/90 via-afm-navy/50 to-transparent"></div>
                 <div className="relative z-10 p-10">
-                  <p className="font-serif text-2xl italic text-white leading-relaxed mb-4">
+                  <p className="font-serif text-2xl italic text-afm-white leading-relaxed mb-4">
                     "Every gift, no matter the size, is a seed of transformation in someone's life."
                   </p>
-                  <p className="text-white/60 text-xs uppercase tracking-widest">AFM Church — Global Missions</p>
+                  <p className="text-afm-white/75 text-xs uppercase tracking-widest">AFM Church — Global Missions</p>
                 </div>
               </div>
             )}

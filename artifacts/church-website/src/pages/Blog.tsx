@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { useListBlogPosts } from "@workspace/api-client-react";
+import { PageHero } from "../components/PageHero";
 
 export default function Blog() {
   const { data: postsData } = useListBlogPosts();
@@ -11,25 +12,12 @@ export default function Blog() {
   ];
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-background text-foreground">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-20">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-5xl md:text-7xl mb-6"
-          >
-            Journal
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-lg font-light max-w-2xl leading-relaxed"
-          >
-            Devotionals, stories, and reflections on faith, culture, and the beauty of the Gospel.
-          </motion.p>
-        </div>
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        title="Journal"
+        description="Devotionals, stories, and reflections on faith, culture, and the beauty of the Gospel."
+      />
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
           {posts.map((post, i) => (
@@ -41,7 +29,7 @@ export default function Blog() {
               className="group cursor-pointer flex flex-col"
             >
               <Link href={`/blog/${post.id}`}>
-                <div className="aspect-[4/5] overflow-hidden relative mb-6">
+                <div className="aspect-[4/5] overflow-hidden relative mb-6 rounded-2xl">
                   <img
                     src={post.imageUrl || `/images/blog-${(i % 3) + 1}.png`}
                     alt={post.title}

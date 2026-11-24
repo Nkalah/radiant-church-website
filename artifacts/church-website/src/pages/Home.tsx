@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
+import { HeroCarousel } from "@/components/HeroCarousel";
+import { QuickLinks } from "@/components/QuickLinks";
 import { 
   useGetChurchStats, 
   useGetFeaturedSermon, 
@@ -66,124 +67,100 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-[100dvh] w-full bg-background overflow-hidden font-sans text-foreground">
-      {/* Hero Section */}
-      <section className="relative h-screen w-full flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="afm.jpg"
-            alt="Hero background" 
-            className="w-full h-full object-cover opacity-80 dark:opacity-40 mix-blend-overlay"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background"></div>
-        </div>
-
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center mt-16">
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="font-serif text-6xl md:text-8xl lg:text-[10rem] font-light tracking-tighter leading-none text-foreground"
-          >
-            AFM
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-            className="mt-6 md:mt-10 text-lg md:text-2xl font-light tracking-widest uppercase text-muted-foreground"
-          >
-            And they continued stedfastly in the apostles' doctrine and fellowship, and in breaking of bread, and in prayers.
-          </motion.p>
-        </div>
-      </section>
+    <main className="w-full overflow-hidden bg-afm-off-white font-sans text-afm-navy">
+      <HeroCarousel />
+      <QuickLinks />
 
       {/* Featured Sermon */}
-      <section className="py-24 md:py-40 px-6 max-w-7xl mx-auto">
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24">
         <div className="flex flex-col md:flex-row items-center gap-16 md:gap-24">
           <div className="flex-1 w-full relative">
-            <div className="aspect-[4/5] overflow-hidden relative">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-afm-white shadow-lg">
               <img 
                 src="bishop.jpg" 
                 alt="Latest Sermon" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-700"
               />
-              <div className="absolute inset-0 ring-1 ring-inset ring-border/20 pointer-events-none"></div>
+              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-afm-navy/10"></div>
             </div>
           </div>
           <div className="flex-1 flex flex-col items-start text-left">
-            <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4">Latest Message</span>
-            <h2 className="font-serif text-4xl md:text-6xl text-foreground mb-6 leading-tight">
+            <span className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-afm-red">Latest Message</span>
+            <h2 className="mb-6 text-3xl font-bold leading-tight text-afm-navy sm:text-4xl md:text-5xl">
               {featuredSermon ? featuredSermon.title : "The Architecture of Faith"}
             </h2>
-            <p className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed mb-10 max-w-lg">
+            <p className="mb-8 max-w-lg text-base leading-relaxed text-afm-navy/75 md:text-lg">
               {featuredSermon?.description || "Discover what it means to build a life of intention, grounded in unshakeable truth. A journey into the sacred spaces of the heart."}
             </p>
-            <Link href={`/sermons/${featuredSermon?.id || 1}`} className="group flex items-center gap-4 text-foreground hover:text-primary transition-colors">
-              <span className="text-sm tracking-widest uppercase pb-1 border-b border-foreground group-hover:border-primary transition-colors">Watch Now</span>
+            <Link
+              href={`/sermons/${featuredSermon?.id || 1}`}
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-afm-red px-7 text-sm font-bold text-afm-white shadow-sm transition hover:-translate-y-0.5 hover:bg-afm-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afm-gold"
+            >
+              Watch Now
             </Link>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 bg-card text-card-foreground border-y border-border">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8 text-center">
-          <div>
-            <h3 className="font-serif text-5xl md:text-6xl text-primary mb-2">{stats?.memberCount || "800+"}</h3>
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">Global Members</p>
+      <section className="border-y border-afm-navy/10 bg-afm-white py-14 md:py-20">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-5 text-center sm:gap-5 sm:px-6 md:grid-cols-4">
+          <div className="rounded-2xl bg-afm-off-white p-4 sm:p-6">
+            <h3 className="mb-2 text-4xl font-extrabold text-afm-navy sm:text-5xl">{stats?.memberCount || "800+"}</h3>
+            <p className="text-xs font-bold uppercase tracking-wider text-afm-navy/65">Global Members</p>
           </div>
-          <div>
-            <h3 className="font-serif text-5xl md:text-6xl text-primary mb-2">{stats?.countriesReached || "6"}</h3>
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">States Reached</p>
+          <div className="rounded-2xl bg-afm-off-white p-4 sm:p-6">
+            <h3 className="mb-2 text-4xl font-extrabold text-afm-navy sm:text-5xl">{stats?.countriesReached || "6"}</h3>
+            <p className="text-xs font-bold uppercase tracking-wider text-afm-navy/65">States Reached</p>
           </div>
-          <div>
-            <h3 className="font-serif text-5xl md:text-6xl text-primary mb-2">{stats?.livesTransformed || "100+"}</h3>
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">Lives Transformed</p>
+          <div className="rounded-2xl bg-afm-off-white p-4 sm:p-6">
+            <h3 className="mb-2 text-4xl font-extrabold text-afm-navy sm:text-5xl">{stats?.livesTransformed || "100+"}</h3>
+            <p className="text-xs font-bold uppercase tracking-wider text-afm-navy/65">Lives Transformed</p>
           </div>
-          <div>
-            <h3 className="font-serif text-5xl md:text-6xl text-primary mb-2">{stats?.yearsEstablished || "1.5"}</h3>
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">Years Established</p>
+          <div className="rounded-2xl bg-afm-off-white p-4 sm:p-6">
+            <h3 className="mb-2 text-4xl font-extrabold text-afm-navy sm:text-5xl">{stats?.yearsEstablished || "1.5"}</h3>
+            <p className="text-xs font-bold uppercase tracking-wider text-afm-navy/65">Years Established</p>
           </div>
         </div>
       </section>
 
       {/* Upcoming Events */}
-      <section className="py-32 px-6 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24">
+        <div className="mb-10 flex flex-col items-start justify-between gap-5 md:mb-12 md:flex-row md:items-end">
           <div>
-            <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">Gatherings</span>
-            <h2 className="font-serif text-4xl md:text-6xl">Upcoming Events</h2>
+            <span className="mb-3 block text-sm font-bold uppercase tracking-[0.18em] text-afm-red">Gatherings</span>
+            <h2 className="text-3xl font-bold text-afm-navy sm:text-4xl md:text-5xl">Upcoming Events</h2>
           </div>
-          <Link href="/events">
-            <span className="text-sm tracking-widest uppercase pb-1 border-b border-foreground hover:text-primary hover:border-primary transition-colors cursor-pointer">
-              View All Events
-            </span>
+          <Link
+            href="/events"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border border-afm-navy/15 px-5 text-sm font-bold text-afm-navy transition hover:border-afm-gold hover:bg-afm-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afm-gold"
+          >
+            View All Events
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 md:gap-7">
           {events?.map((event, i) => (
             <Link key={event.id} href={`/events/${event.id}`}>
-              <div className="group cursor-pointer border border-border bg-card hover:border-primary transition-colors flex flex-col h-full">
-                <div className="aspect-[4/3] overflow-hidden relative">
+              <div className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-afm-navy/10 bg-afm-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <img 
                     src={event.imageUrl || `/images/event-${(i % 3) + 1}.png`} 
                     alt={event.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale-0 md:grayscale md:hover:grayscale-0"
                   />
-                  <div className="absolute top-4 left-4 bg-background/80 backdrop-blur text-foreground text-xs uppercase tracking-widest px-3 py-1 font-medium">
+                  <div className="absolute left-4 top-4 rounded-full bg-afm-white/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-afm-navy shadow-sm backdrop-blur">
                     {event.category}
                   </div>
                 </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <div className="flex justify-between items-start mb-4 text-xs font-mono text-muted-foreground">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <div className="mb-3 flex items-start justify-between text-xs font-semibold text-afm-navy/60">
                     <span>{event.date}</span>
                   </div>
-                  <h3 className="font-serif text-2xl mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="mb-2 text-xl font-bold text-afm-navy transition-colors group-hover:text-afm-red">
                     {event.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm font-light mb-6 flex-1">
+                  <p className="mb-2 flex-1 text-sm leading-relaxed text-afm-navy/70">
                     {event.location}
                   </p>
                 </div>
@@ -194,14 +171,14 @@ export default function Home() {
       </section>
 
      {/* Global Mission */}
-<section className="py-32 bg-foreground text-background">
-  <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+<section className="border-y border-afm-navy/10 bg-afm-white py-16 md:py-24">
+  <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 px-5 sm:px-6 md:grid-cols-2 md:gap-16">
     <div>
-      <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">Global Impact</span>
-      <h2 className="font-serif text-4xl md:text-6xl mb-8 leading-tight">
-        Confession of <br/><span className="text-background/60 italic">Faith</span>
+      <span className="mb-3 block text-sm font-bold uppercase tracking-[0.18em] text-afm-red">Global Impact</span>
+      <h2 className="mb-6 text-3xl font-bold leading-tight text-afm-navy sm:text-4xl md:text-5xl">
+        Confession of <br/><span className="italic text-afm-gold">Faith</span>
       </h2>
-      <p className="text-background/60 text-sm font-light leading-relaxed mb-8">
+      <p className="mb-8 text-sm leading-relaxed text-afm-navy/70">
         The Church makes the following confession of faith upon which all its beliefs, doctrines, teachings, practices, structures, government, discipline, ministries and departments, functions, activities, this Constitution and the Church's rules, regulations, and policies, and its existence shall be founded, based, and established, namely that the Church and its members shall believe and confess faith in:
       </p>
 
@@ -218,90 +195,103 @@ export default function Home() {
           "The Baptism in the Holy Spirit and the evidence thereof, including the evidence of speaking in tongues, and the manifestations of His Fruit, Gifts, and Graces.",
         ].map((item, i) => (
           <div key={i} className="flex gap-4 items-start">
-            <span className="text-primary font-serif text-lg leading-none mt-1 flex-shrink-0">
+            <span className="mt-1 flex-shrink-0 text-lg font-extrabold leading-none text-afm-gold">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <p className="text-background/80 text-sm font-light leading-relaxed border-l border-background/20 pl-4">
+            <p className="border-l border-afm-navy/15 pl-4 text-sm leading-relaxed text-afm-navy/80">
               {item}
             </p>
           </div>
         ))}
       </div>
 
-      <Link href="/about">
-        <Button variant="outline" className="border-background text-background hover:bg-background hover:text-foreground rounded-none uppercase tracking-widest text-xs px-8 h-12">
-          Discover Our Mission
-        </Button>
+      <Link
+        href="/about"
+        className="inline-flex h-12 items-center justify-center rounded-full border border-afm-navy bg-afm-navy px-8 text-xs font-bold uppercase tracking-wider text-afm-white shadow-sm transition hover:bg-afm-red focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afm-gold"
+      >
+        Discover Our Mission
       </Link>
     </div>
 
-    <div className="grid grid-cols-2 gap-4 md:sticky md:top-32">
-      <div className="aspect-square bg-background/10 overflow-hidden">
-        <img src="bible.jpg" alt="Mission" className="w-full h-full object-cover opacity-80 mix-blend-luminosity" />
+    <div className="grid grid-cols-2 gap-3 md:sticky md:top-32 md:gap-4">
+      <div className="aspect-square overflow-hidden rounded-2xl bg-afm-off-white shadow-sm">
+        <img src="bible.jpg" alt="An open Bible" className="h-full w-full object-cover" loading="lazy" />
       </div>
-      <div className="aspect-square bg-background/10 mt-12 overflow-hidden">
-        <img src="conf3.jpg" />
+      <div className="mt-8 aspect-square overflow-hidden rounded-2xl bg-afm-off-white shadow-sm md:mt-12">
+        <img src="conf3.jpg" alt="AFM India members gathered in fellowship" className="h-full w-full object-cover" loading="lazy" />
       </div>
     </div>
   </div>
 </section>
       {/* Testimonials */}
-      <section className="py-32 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">Stories</span>
-          <h2 className="font-serif text-4xl md:text-6xl">Lives Transformed</h2>
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24">
+        <div className="mb-10 text-center md:mb-12">
+          <span className="mb-3 block text-sm font-bold uppercase tracking-[0.18em] text-afm-red">Stories</span>
+          <h2 className="text-3xl font-bold text-afm-navy sm:text-4xl md:text-5xl">Lives Transformed</h2>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
           {testimonials?.slice(0,4).map((testimonial, i) => (
-            <div key={testimonial.id} className="text-center p-8 border border-border bg-card">
-              <div className="w-20 h-20 mx-auto rounded-full overflow-hidden mb-6 border-2 border-primary/20">
-                <img src={testimonial.avatarUrl || `/images/avatar-${i + 1}.png`} alt={testimonial.name} className="w-full h-full object-cover grayscale" />
+            <div key={testimonial.id} className="rounded-2xl border border-afm-navy/10 bg-afm-white p-6 text-center shadow-sm sm:p-8">
+              <div className="mx-auto mb-5 h-20 w-20 overflow-hidden rounded-full border-2 border-afm-gold/40">
+                <img src={testimonial.avatarUrl || `/images/avatar-${i + 1}.png`} alt={testimonial.name} className="w-full h-full object-cover grayscale-0 md:grayscale" />
               </div>
-              <p className="font-serif text-xl italic mb-6 leading-relaxed text-muted-foreground">
+              <p className="mb-5 text-base italic leading-relaxed text-afm-navy/75">
                 "{testimonial.quote}"
               </p>
-              <h4 className="text-sm font-medium tracking-widest uppercase mb-1">{testimonial.name}</h4>
-              <p className="text-xs text-muted-foreground">{testimonial.location}</p>
+              <h4 className="mb-1 text-sm font-bold uppercase tracking-wider text-afm-navy">{testimonial.name}</h4>
+              <p className="text-xs text-afm-navy/60">{testimonial.location}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Newsletter */}
-      <form 
-  name="newsletter"
-  method="POST"
-  data-netlify="true"
-  className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"
-  onSubmit={(e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData as any).toString(),
-    }).then(() => {
-      toast({ title: "Subscribed", description: "You have been added to our newsletter." });
-      form.reset();
-    }).catch(() => {
-      toast({ title: "Error", description: "Failed to subscribe. Please try again.", variant: "destructive" });
-    });
-  }}
->
- <input type="hidden" name="form-name" value="newsletter" />
-<Input 
-  placeholder="Your email address" 
-  className="h-14 rounded-none border-border bg-background focus-visible:ring-1 focus-visible:ring-primary flex-1"
-  {...form.register("email")}
-/>
-<Button 
-  type="submit"
-  className="h-14 rounded-none uppercase tracking-widest text-xs px-8"
->
-    Subscribe
-  </Button>
-</form></main>
+      <section className="border-t border-afm-navy/10 bg-afm-off-white px-5 py-16 sm:px-6 md:py-20">
+        <div className="mx-auto max-w-7xl text-center">
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-afm-red">
+            Stay Connected
+          </p>
+          <h2 className="mb-8 text-3xl font-bold text-afm-navy sm:text-4xl">
+            Get news from AFM India
+          </h2>
+          <form
+            name="newsletter"
+            method="POST"
+            data-netlify="true"
+            className="mx-auto flex max-w-xl flex-col gap-3 sm:flex-row"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target as HTMLFormElement);
+              fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData as any).toString(),
+              }).then(() => {
+                toast({ title: "Subscribed", description: "You have been added to our newsletter." });
+                form.reset();
+              }).catch(() => {
+                toast({ title: "Error", description: "Failed to subscribe. Please try again.", variant: "destructive" });
+              });
+            }}
+          >
+            <input type="hidden" name="form-name" value="newsletter" />
+            <Input
+              type="email"
+              aria-label="Your email address"
+              placeholder="Your email address"
+              className="h-12 flex-1 rounded-full border-afm-navy/15 bg-afm-white px-5 focus-visible:ring-2 focus-visible:ring-afm-gold"
+              {...form.register("email")}
+            />
+            <Button
+              type="submit"
+              className="h-12 rounded-full bg-afm-gold px-8 text-sm font-bold text-afm-navy shadow-sm hover:bg-afm-navy hover:text-afm-white"
+            >
+              Subscribe
+            </Button>
+          </form>
+        </div>
+      </section>
+    </main>
   );
 }
 

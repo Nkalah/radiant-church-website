@@ -1,6 +1,7 @@
 import { Router, type IRouter } from "express";
 import { eq, desc } from "drizzle-orm";
 import { db, eventsTable } from "@workspace/db";
+import { demoEvents } from "@workspace/db/events-demo-data";
 import {
   ListEventsQueryParams,
   ListEventsResponse,
@@ -18,13 +19,14 @@ router.get("/events", async (req, res): Promise<void> => {
   }
 
   const { limit = 10, upcoming } = query.data;
-  const all = await db.select().from(eventsTable).orderBy(desc(eventsTable.createdAt));
+  const databaseEvents = await db.select().from(eventsTable).orderBy(desc(eventsTable.createdAt));
+  const all = databaseEvents.length > 0
+    ? databaseEvents
+    : demoEvents.map((demoEvent) => ({ ...demoEvent, createdAt: new Date(0) }));
 
-  let filtered = all;
-  if (upcoming) {
-    const today = new Date().toISOString().split("T")[0];
-    filtered = all.filter((e) => e.date >= today);
-  }
+  const filtered = upcoming
+    ? all.filter((e) => e.date >= new Date().toISOString().split("T")[0])
+    : all;
 
   const paged = filtered.slice(0, limit);
   res.json(ListEventsResponse.parse(paged));
@@ -43,12 +45,14 @@ router.get("/events/:id", async (req, res): Promise<void> => {
     .from(eventsTable)
     .where(eq(eventsTable.id, params.data.id));
 
-  if (!event) {
+  const result = event ?? demoEvents.find((demoEvent) => demoEvent.id === params.data.id);
+
+  if (!result) {
     res.status(404).json({ error: "Event not found" });
     return;
   }
 
-  res.json(GetEventResponse.parse(event));
+  res.json(GetEventResponse.parse(result));
 });
 
 export default router;

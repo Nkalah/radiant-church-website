@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Play, Pause } from "lucide-react";
 import { useState } from "react";
+import { PageHero } from "../components/PageHero";
 
 const fallbackSermons: Record<number, any> = {
   1: { id: 1, title: "Word to the Spirit", series: "Holy Spirit", speaker: "Reverend N.Jecheche", date: "May 31, 2026", duration: "45:00", description: "In this message, we explore what it means to be led by the Spirit of God in every area of our lives.", scripture: "But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness. — Galatians 5:22", thumbnailUrl: "https://scontent.fluh1-2.fna.fbcdn.net/v/t39.30808-6/612203361_122098807761203634_4954983585349969328_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=105&ccb=1-7&_nc_sid=52bb43&_nc_ohc=kHtVxQN_IZAQ7kNvwH76RnE&_nc_oc=AdqxnrGsOk-zcKHE6CqRBywFfkbMCgdHMESKCr2Vn4htTWYkqdlQ3IVEgJy0X62-UqyQUWPbP27HecfsNKUM7i8T&_nc_zt=23&_nc_ht=scontent.fluh1-2.fna&oh=00_Af-Wbca_SPi-pQnI8jxRwidWTwUVwajVRzHn6daK47ZT1w&oe=6A269581" },
@@ -25,46 +26,28 @@ export default function SermonDetail() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <div className="pt-32 pb-32 min-h-screen bg-background text-foreground">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="mb-12">
-          <div className="flex items-center gap-4 text-xs font-medium tracking-widest uppercase mb-6">
-            <span className="text-primary">{sermon.series}</span>
-            <span className="text-muted-foreground w-1 h-1 rounded-full bg-muted-foreground"></span>
-            <span className="text-muted-foreground">{sermon.date}</span>
-          </div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight"
-          >
-            {sermon.title}
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-muted-foreground font-light"
-          >
-            {sermon.speaker}
-          </motion.p>
-        </div>
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        align="center"
+        eyebrow={`${sermon.series} · ${sermon.date}`}
+        title={sermon.title}
+        description={sermon.speaker}
+      />
+      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
 
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="aspect-video w-full relative bg-muted mb-16 group"
+          className="aspect-video w-full relative overflow-hidden rounded-2xl bg-muted mb-12 shadow-sm group"
         >
           <img
             src={sermon.thumbnailUrl || "/images/sermon-1.png"}
             alt={sermon.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <Button size="icon" className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md border border-white/50 text-white hover:bg-white hover:text-black transition-all">
+          <div className="absolute inset-0 bg-afm-navy/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <Button size="icon" className="w-20 h-20 rounded-full bg-afm-white/20 backdrop-blur-md border border-afm-white/50 text-afm-white hover:bg-afm-white hover:text-afm-navy transition-all">
               <Play className="w-8 h-8 ml-1" />
             </Button>
           </div>
@@ -78,14 +61,14 @@ export default function SermonDetail() {
             </p>
 
             {sermon.scripture && (
-              <div className="p-8 border-l-2 border-primary bg-card/50 italic font-serif text-2xl text-muted-foreground leading-relaxed">
+              <div className="rounded-r-2xl border-l-4 border-afm-gold bg-afm-white p-8 italic text-xl text-muted-foreground leading-relaxed shadow-sm">
                 "{sermon.scripture}"
               </div>
             )}
           </div>
 
           <div>
-            <div className="p-8 border border-border bg-card mb-8">
+            <div className="rounded-2xl border border-border bg-card p-8 mb-8 shadow-sm">
               <h3 className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-6">Listen Audio</h3>
               <div className="flex items-center gap-4 mb-4">
                 <Button
@@ -106,7 +89,7 @@ export default function SermonDetail() {
                   </div>
                 </div>
               </div>
-              <Button variant="ghost" className="w-full text-xs uppercase tracking-widest rounded-none border border-border">Download MP3</Button>
+              <Button variant="outline" className="w-full text-xs uppercase tracking-widest">Download MP3</Button>
             </div>
 
             <div>

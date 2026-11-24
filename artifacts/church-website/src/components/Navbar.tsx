@@ -1,196 +1,103 @@
-import { useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useTheme } from "@/components/ThemeProvider";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/sermons", label: "Sermons" },
-  { href: "/events", label: "Events" },
-  { href: "/ministries", label: "Ministries" },
-  { href: "/live", label: "Live" },
-  { href: "/history", label: "History" },
-  { href: "/assemblies", label: "Assemblies" },
-];
-
-const LOGO_URL = "afm.jpg";
+import { Menu } from "lucide-react";
+import { MobileMenu } from "./MobileMenu";
+import { LOGO_URL, navLinks } from "./navigation";
 
 export function Navbar() {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const closeMenu = useCallback(() => setMobileMenuOpen(false), []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    closeMenu();
+  }, [closeMenu, location]);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b border-transparent ${
+        className={`sticky top-0 z-50 h-16 border-b border-afm-navy/10 backdrop-blur-xl transition-all duration-300 md:h-[76px] ${
           isScrolled
-            ? "bg-background/80 backdrop-blur-xl border-border py-4"
-            : "bg-transparent py-6"
+            ? "bg-afm-white/90 shadow-md"
+            : "bg-afm-white/75 shadow-md"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          
-          {/* Logo + AFM text */}
-          <Link href="/">
-            <div className="flex items-center gap-3 cursor-pointer">
-              <div className="w-9 h-9 rounded-full overflow-hidden border border-border/40 flex-shrink-0">
-                <img
-                  src={LOGO_URL}
-                  alt="AFM Logo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-             <span className="font-serif tracking-widest font-light text-foreground leading-tight">
-  <span className="block text-lg">Apostolic Faith Mission</span>
-  <span className="block text-lg text-center">In India</span>
-</span>
-            </div>
+        <div className="mx-auto flex h-full max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
+          <Link
+            href="/"
+            className="flex shrink-0 cursor-pointer items-center gap-2 text-afm-navy"
+          >
+            <img
+              src={LOGO_URL}
+              alt="AFM India logo"
+              className="h-10 w-10 shrink-0 rounded-full object-cover md:h-12 md:w-12"
+            />
+            <span className="font-display text-xs font-medium leading-tight min-[400px]:text-sm md:text-base">
+              <span className="hidden max-[399px]:block">AFM India</span>
+              <span className="max-[399px]:hidden">
+                Apostolic Faith Mission
+                <span className="block">In India</span>
+              </span>
+            </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href}>
-                <span
-                  className={`text-sm tracking-widest uppercase transition-colors hover:text-primary cursor-pointer ${
-                    location === link.href
-                      ? "text-primary"
-                      : "text-muted-foreground"
+          <nav aria-label="Main navigation" className="hidden items-center gap-1 lg:flex">
+            {navLinks.map((link) => {
+              const isActive = location === link.href
+                || (link.href !== "/" && location.startsWith(`${link.href}/`));
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`rounded-full px-3 py-2 text-xs font-bold uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afm-gold xl:px-3.5 ${
+                    isActive
+                      ? "bg-afm-gold/15 text-afm-red"
+                      : "text-afm-navy/80 hover:bg-afm-off-white hover:text-afm-red"
                   }`}
                 >
                   {link.label}
-                </span>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          <div className="hidden shrink-0 items-center gap-2 lg:flex">
+            <Link
+              href="/giving"
+              className="inline-flex min-h-10 items-center justify-center rounded-full bg-afm-red px-5 text-xs font-bold uppercase tracking-wider text-afm-white shadow-sm transition hover:-translate-y-0.5 hover:bg-afm-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afm-gold"
             >
-              <div className="w-4 h-4 rounded-full bg-foreground" />
-            </Button>
-            <Link href="/giving">
-              <Button
-                variant="outline"
-                className="rounded-none border-foreground text-foreground hover:bg-foreground hover:text-background tracking-widest uppercase text-xs px-6"
-              >
-                Give
-              </Button>
+              Give
             </Link>
           </div>
 
           <button
-            className="md:hidden text-foreground"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setMobileMenuOpen(true)}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-afm-navy transition hover:bg-afm-off-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afm-gold lg:hidden"
           >
-            <Menu className="w-6 h-6" />
+            <Menu aria-hidden="true" size={25} />
           </button>
         </div>
       </header>
 
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[60] bg-background flex flex-col p-6 overflow-hidden"
-          >
-            {/* Header: logo + close — always visible */}
-            <div className="flex items-center justify-between mb-8 flex-shrink-0">
-              <Link href="/">
-                <div
-                  className="flex items-center gap-3 cursor-pointer"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <div className="w-9 h-9 rounded-full overflow-hidden border border-border/40 flex-shrink-0">
-                    <img
-                      src={LOGO_URL}
-                      alt="AFM Logo"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <span className="font-serif text-2xl tracking-widest font-light text-foreground">
-                    Apostolic Faith Mission In India
-                  </span>
-                </div>
-              </Link>
-              <button
-                className="text-foreground"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <X className="w-8 h-8" />
-              </button>
-            </div>
-
-            {/* Scrollable nav links */}
-            <nav className="flex flex-col gap-6 overflow-y-auto flex-1 pb-4">
-              {navLinks.map((link) => (
-                <Link key={link.href} href={link.href}>
-                  <span
-                    className="font-serif text-4xl text-foreground font-light tracking-wide cursor-pointer"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </span>
-                </Link>
-              ))}
-              <div className="h-px bg-border my-4" />
-              <Link href="/giving">
-                <span
-                  className="font-serif text-4xl text-primary font-light tracking-wide cursor-pointer"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Giving
-                </span>
-              </Link>
-              <Link href="/prayer">
-                <span
-                  className="font-serif text-4xl text-foreground font-light tracking-wide cursor-pointer"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Prayer
-                </span>
-              </Link>
-              <Link href="/contact">
-                <span
-                  className="font-serif text-4xl text-foreground font-light tracking-wide cursor-pointer"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Contact
-                </span>
-              </Link>
-            </nav>
-
-            {/* Theme toggle — always visible at bottom */}
-            <div className="flex justify-between items-center pt-4 flex-shrink-0 border-t border-border">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="w-12 h-12 rounded-full border border-border"
-              >
-                <div className="w-4 h-4 rounded-full bg-foreground" />
-              </Button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <MobileMenu
+        open={mobileMenuOpen}
+        location={location}
+        onClose={closeMenu}
+      />
     </>
   );
 }

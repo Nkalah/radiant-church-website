@@ -20,20 +20,30 @@ export const EventSchema = z.object({
   mapUrl: z.string().nullable().optional(),
   parkingInfo: z.string().nullable().optional(),
   category: z.string(),
+  theme: z.string().nullable().optional(),
   description: z.string().nullable().optional(),
   imageUrl: z.string().nullable().optional(),
+
+  speakerName: z.string().nullable().optional(),
+  speakerTitle: z.string().nullable().optional(),
+  speakerBio: z.string().nullable().optional(),
+  speakerImageUrl: z.string().nullable().optional(),
+  schedule: z.array(ScheduleItem).nullable().optional(),
+  locationName: z.string().nullable().optional(),
+  locationAddress: z.string().nullable().optional(),
+  locationMapUrl: z.string().nullable().optional(),
+  registrationDescription: z.string().nullable().optional(),
+  contactName: z.string().nullable().optional(),
+  contactPhone: z.string().nullable().optional(),
+  contactEmail: z.string().nullable().optional(),
+  additionalInformation: z.string().nullable().optional(),
 
   organizer: z.string().nullable().optional(),
   audience: z.string().nullable().optional(),
   cost: z.string().nullable().optional(),
 
   whatToExpect: z.array(z.string()).nullable().optional(),
-  schedule: z.array(ScheduleItem).nullable().optional(),
-
-  speakerName: z.string().nullable().optional(),
   speakerRole: z.string().nullable().optional(),
-  speakerImageUrl: z.string().nullable().optional(),
-  speakerBio: z.string().nullable().optional(),
   speakerContact: z.string().nullable().optional(),
 
   registrationRequired: z.boolean().nullable().optional(),
@@ -41,8 +51,6 @@ export const EventSchema = z.object({
   registrationDeadline: z.string().nullable().optional(),
   availableSeats: z.number().nullable().optional(),
 
-  contactPhone: z.string().nullable().optional(),
-  contactEmail: z.string().nullable().optional(),
   contactWhatsapp: z.string().nullable().optional(),
 });
 

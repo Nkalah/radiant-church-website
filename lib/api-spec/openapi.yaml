@@ -357,20 +357,20 @@ components:
           type: ["string", "null"]
         category:
           type: string
+        theme:
+          type: ["string", "null"]
         description:
           type: ["string", "null"]
         imageUrl:
           type: ["string", "null"]
-        organizer:
+        speakerTitle:
           type: ["string", "null"]
-        audience:
+        speakerName:
           type: ["string", "null"]
-        cost:
+        speakerBio:
           type: ["string", "null"]
-        whatToExpect:
-          type: ["array", "null"]
-          items:
-            type: string
+        speakerImageUrl:
+          type: ["string", "null"]
         schedule:
           type: ["array", "null"]
           items:
@@ -383,13 +383,33 @@ components:
                 type: string
               description:
                 type: ["string", "null"]
-        speakerName:
+        locationName:
           type: ["string", "null"]
+        locationAddress:
+          type: ["string", "null"]
+        locationMapUrl:
+          type: ["string", "null"]
+        registrationDescription:
+          type: ["string", "null"]
+        contactName:
+          type: ["string", "null"]
+        contactPhone:
+          type: ["string", "null"]
+        contactEmail:
+          type: ["string", "null"]
+        additionalInformation:
+          type: ["string", "null"]
+        organizer:
+          type: ["string", "null"]
+        audience:
+          type: ["string", "null"]
+        cost:
+          type: ["string", "null"]
+        whatToExpect:
+          type: ["array", "null"]
+          items:
+            type: string
         speakerRole:
-          type: ["string", "null"]
-        speakerImageUrl:
-          type: ["string", "null"]
-        speakerBio:
           type: ["string", "null"]
         speakerContact:
           type: ["string", "null"]
@@ -401,10 +421,6 @@ components:
           type: ["string", "null"]
         availableSeats:
           type: ["integer", "null"]
-        contactPhone:
-          type: ["string", "null"]
-        contactEmail:
-          type: ["string", "null"]
         contactWhatsapp:
           type: ["string", "null"]
     PrayerInput:

@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { Calendar, Clock, MapPin, Tag, User, Users, Ticket, Wallet } from "lucide-react";
+import { Calendar, Clock, MapPin, Tag, User, Users, Ticket, Wallet, Sparkles } from "lucide-react";
 import type { Event } from "@workspace/api-client-react";
 import { formatTimeRange } from "../../lib/event-utils";
 
@@ -39,6 +39,7 @@ export function EventMeta({ event }: { event: Event }) {
         <MetaItem icon={Clock} label="Time" value={formatTimeRange(event.time, event.endTime)} />
         <MetaItem icon={MapPin} label="Location" value={event.location} />
         <MetaItem icon={Tag} label="Category" value={event.category} />
+        <MetaItem icon={Sparkles} label="Theme" value={event.theme} />
         <MetaItem icon={User} label="Organizer" value={event.organizer} />
         <MetaItem icon={Users} label="Audience" value={event.audience} />
         <MetaItem icon={Ticket} label="Registration" value={registrationStatus} />

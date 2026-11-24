@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { PageHero } from "./components/PageHero";
 
 const timeline = [
   {
@@ -42,37 +43,13 @@ const timeline = [
 
 export default function History() {
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-background text-foreground">
-      <div className="max-w-5xl mx-auto px-6">
-
-        {/* Header */}
-        <div className="mb-20">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-xs uppercase tracking-widest text-muted-foreground mb-4 font-medium"
-          >
-            Our Heritage
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.05 }}
-            className="font-serif text-5xl md:text-7xl mb-6 leading-tight"
-          >
-            The History of<br />AFM International
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-lg font-light max-w-2xl leading-relaxed"
-          >
-            From a humble revival on Azusa Street to a global Pentecostal movement — 
-            the story of how the fire of God travelled from Los Angeles to South Africa, 
-            Zimbabwe, and the nations of the world.
-          </motion.p>
-        </div>
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        eyebrow="Our Heritage"
+        title={<>The History of <span className="text-afm-red">AFM International</span></>}
+        description="From a humble revival on Azusa Street to a global Pentecostal movement — the story of how the fire of God travelled from Los Angeles to South Africa, Zimbabwe, and the nations of the world."
+      />
+      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
 
         {/* Timeline */}
         <div className="relative">
@@ -98,7 +75,7 @@ export default function History() {
                 </div>
 
                 {/* Content */}
-                <div className="border border-border bg-card p-8 hover:border-primary transition-colors">
+                <div className="rounded-2xl border border-border bg-card p-8 shadow-sm hover:border-primary hover:shadow-md transition-all">
                   <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">
                     {item.location}
                   </p>

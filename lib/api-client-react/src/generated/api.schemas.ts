@@ -52,9 +52,37 @@ export interface Event {
   parkingInfo?: string | null;
   category: string;
   /** @nullable */
+  theme?: string | null;
+  /** @nullable */
   description?: string | null;
   /** @nullable */
   imageUrl?: string | null;
+  /** @nullable */
+  speakerTitle?: string | null;
+  /** @nullable */
+  speakerName?: string | null;
+  /** @nullable */
+  speakerBio?: string | null;
+  /** @nullable */
+  speakerImageUrl?: string | null;
+  /** @nullable */
+  schedule?: EventScheduleItem[] | null;
+  /** @nullable */
+  locationName?: string | null;
+  /** @nullable */
+  locationAddress?: string | null;
+  /** @nullable */
+  locationMapUrl?: string | null;
+  /** @nullable */
+  registrationDescription?: string | null;
+  /** @nullable */
+  contactName?: string | null;
+  /** @nullable */
+  contactPhone?: string | null;
+  /** @nullable */
+  contactEmail?: string | null;
+  /** @nullable */
+  additionalInformation?: string | null;
   /** @nullable */
   organizer?: string | null;
   /** @nullable */
@@ -64,15 +92,7 @@ export interface Event {
   /** @nullable */
   whatToExpect?: string[] | null;
   /** @nullable */
-  schedule?: EventScheduleItem[] | null;
-  /** @nullable */
-  speakerName?: string | null;
-  /** @nullable */
   speakerRole?: string | null;
-  /** @nullable */
-  speakerImageUrl?: string | null;
-  /** @nullable */
-  speakerBio?: string | null;
   /** @nullable */
   speakerContact?: string | null;
   registrationRequired?: boolean;
@@ -82,10 +102,6 @@ export interface Event {
   registrationDeadline?: string | null;
   /** @nullable */
   availableSeats?: number | null;
-  /** @nullable */
-  contactPhone?: string | null;
-  /** @nullable */
-  contactEmail?: string | null;
   /** @nullable */
   contactWhatsapp?: string | null;
 }

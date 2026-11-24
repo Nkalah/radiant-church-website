@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { useState } from "react";
 import { useListSermons } from "@workspace/api-client-react";
 import { Button } from "@/components/ui/button";
+import { PageHero } from "../components/PageHero";
 import { Input } from "@/components/ui/input";
 
 const fallbackSermons = [
@@ -38,25 +39,13 @@ export default function Sermons() {
   });
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-background text-foreground">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-20 text-center max-w-2xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-5xl md:text-7xl mb-6"
-          >
-            Sermon Library
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-lg font-light leading-relaxed"
-          >
-            Messages of hope, faith, and transformation. Browse our recent teachings.
-          </motion.p>
-        </div>
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        align="center"
+        title="Sermon Library"
+        description="Messages of hope, faith, and transformation. Browse our recent teachings."
+      />
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
 
         <div className="mb-12 flex flex-col sm:flex-row gap-4 justify-between items-start">
           <div className="flex w-full sm:max-w-sm space-x-2">
@@ -65,9 +54,9 @@ export default function Sermons() {
               placeholder="Search sermons..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="rounded-none border-border focus-visible:ring-primary bg-transparent"
+              className="bg-afm-white"
             />
-            <Button variant="outline" className="rounded-none" onClick={() => setSearch(search)}>Search</Button>
+            <Button variant="outline" onClick={() => setSearch(search)}>Search</Button>
           </div>
 
           <div className="flex flex-col gap-3 w-full sm:w-auto">
@@ -120,8 +109,8 @@ export default function Sermons() {
                       alt={sermon.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full border border-white flex items-center justify-center text-white backdrop-blur-sm">
+                    <div className="absolute inset-0 bg-afm-navy/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full border border-afm-white flex items-center justify-center text-afm-white backdrop-blur-sm">
                         ▶
                       </div>
                     </div>

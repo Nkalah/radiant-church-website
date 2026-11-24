@@ -1,6 +1,7 @@
 import { useParams, Link } from "wouter";
 import { useGetBlogPost } from "@workspace/api-client-react";
 import { motion } from "framer-motion";
+import { PageHero } from "../components/PageHero";
 
 const fallbackPosts: Record<number, any> = {
   1: { id: 1, title: "Walking by Faith in an Age of Uncertainty", category: "Devotional", publishedAt: "June 1, 2026", author: "Reverend N.Jecheche", readTime: "5 min read", excerpt: "In a world full of noise and confusion, what does it truly mean to walk by faith and not by sight?", imageUrl: "https://i.pinimg.com/736x/50/79/e2/5079e269d0c50fa9b276b7f4586e3d05.jpg", content: null },
@@ -19,45 +20,19 @@ export default function BlogDetail() {
   const post = apiPost ?? fallbackPosts[postId] ?? fallbackPosts[1];
 
   return (
-    <article className="pt-32 pb-32 min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="mb-16 text-center">
-          <div className="flex items-center justify-center gap-4 text-xs font-medium tracking-widest uppercase mb-8">
-            <span className="text-primary">{post.category}</span>
-            <span className="text-muted-foreground w-1 h-1 rounded-full bg-muted-foreground"></span>
-            <span className="text-muted-foreground">{post.publishedAt}</span>
-            {post.readTime && (
-              <>
-                <span className="text-muted-foreground w-1 h-1 rounded-full bg-muted-foreground"></span>
-                <span className="text-muted-foreground">{post.readTime}</span>
-              </>
-            )}
-          </div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight"
-          >
-            {post.title}
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-muted-foreground font-light italic"
-          >
-            By {post.author}
-          </motion.p>
-        </div>
-      </div>
+    <article className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        align="center"
+        eyebrow={`${post.category} · ${post.publishedAt}${post.readTime ? ` · ${post.readTime}` : ""}`}
+        title={post.title}
+        description={`By ${post.author}`}
+      />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2 }}
-        className="max-w-5xl mx-auto px-6 mb-20"
+        className="mx-auto max-w-5xl px-4 py-12 sm:px-6 md:py-16 lg:px-8"
       >
         <div className="aspect-[21/9] w-full relative bg-muted overflow-hidden">
           <img
@@ -68,8 +43,8 @@ export default function BlogDetail() {
         </div>
       </motion.div>
 
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="prose prose-lg dark:prose-invert prose-p:font-light prose-p:leading-loose prose-headings:font-serif prose-a:text-primary mx-auto">
+      <div className="mx-auto max-w-3xl px-4 pb-12 sm:px-6 md:pb-20 lg:px-8">
+        <div className="prose prose-lg prose-p:font-light prose-p:leading-loose prose-headings:font-sans prose-a:text-primary mx-auto">
           <p className="text-2xl font-light leading-relaxed mb-8 text-foreground/90">
             {post.excerpt}
           </p>

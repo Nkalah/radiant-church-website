@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+import { PageHero } from "../components/PageHero";
 
 const prayerSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -61,32 +62,20 @@ export default function Prayer() {
   }
 
   return (
-    <div className="pt-32 pb-32 min-h-screen bg-background text-foreground">
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">Prayer</span>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-5xl md:text-6xl mb-6 leading-tight"
-          >
-            We Believe in <br/><span className="italic text-muted-foreground">The Power of Prayer</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-lg font-light leading-relaxed"
-          >
-            Whatever you're facing, you don't have to face it alone. Share your request below, and our pastoral team will pray over it.
-          </motion.p>
-        </div>
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        align="center"
+        eyebrow="Prayer"
+        title={<>We Believe in <span className="text-afm-red">The Power of Prayer</span></>}
+        description="Whatever you're facing, you don't have to face it alone. Share your request below, and our pastoral team will pray over it."
+      />
+      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="p-8 md:p-12 border border-border bg-card"
+          className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8 md:p-12"
         >
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -98,7 +87,7 @@ export default function Prayer() {
                     <FormItem>
                       <FormLabel className="text-xs tracking-widest uppercase">Your Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Doe" className="rounded-none border-border bg-transparent focus-visible:ring-1 focus-visible:ring-primary h-12" {...field} />
+                        <Input placeholder="John Doe" className="h-12" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -111,7 +100,7 @@ export default function Prayer() {
                     <FormItem>
                       <FormLabel className="text-xs tracking-widest uppercase">Email (Optional)</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="john@example.com" className="rounded-none border-border bg-transparent focus-visible:ring-1 focus-visible:ring-primary h-12" {...field} />
+                        <Input type="email" placeholder="john@example.com" className="h-12" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -128,7 +117,7 @@ export default function Prayer() {
                     <FormControl>
                       <Textarea 
                         placeholder="Share your heart..." 
-                        className="min-h-[150px] resize-none rounded-none border-border bg-transparent focus-visible:ring-1 focus-visible:ring-primary"
+                        className="min-h-[150px] resize-none"
                         {...field} 
                       />
                     </FormControl>
@@ -146,7 +135,7 @@ export default function Prayer() {
                       <Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
-                        className="rounded-none data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+                        className="rounded-md data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
                       />
                     </FormControl>
                     <div className="space-y-1 leading-none">
@@ -163,7 +152,7 @@ export default function Prayer() {
 
               <Button 
                 type="submit" 
-                className="w-full h-14 rounded-none uppercase tracking-widest text-sm font-medium"
+                className="w-full h-14 uppercase tracking-widest text-sm font-medium"
                 disabled={submitPrayer.isPending}
               >
                 {submitPrayer.isPending ? "Submitting..." : "Submit Prayer Request"}

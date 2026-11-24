@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { MapPin, ArrowRight, Users, Church, Heart, Globe } from "lucide-react";
 import { assemblies } from "./assemblies-data";
+import { PageHero } from "../components/PageHero";
 
 const stats = [
   { label: "Assemblies", value: "6", icon: Church },
@@ -12,48 +13,25 @@ const stats = [
 
 export default function Assemblies() {
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-background text-foreground">
-      <div className="max-w-7xl mx-auto px-6">
-
-        {/* Header */}
-        <div className="mb-20">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-xs uppercase tracking-widest text-muted-foreground mb-4 font-medium"
-          >
-            AFM India
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.05 }}
-            className="font-serif text-5xl md:text-7xl mb-6 leading-tight"
-          >
-            Our Assemblies
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-lg font-light max-w-2xl leading-relaxed"
-          >
-            Five communities, one mission — proclaiming the Gospel of Jesus Christ
-            across Punjab and beyond. Find the assembly nearest to you.
-          </motion.p>
-        </div>
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        eyebrow="AFM India"
+        title="Our Assemblies"
+        description="Five communities, one mission — proclaiming the Gospel of Jesus Christ across Punjab and beyond. Find the assembly nearest to you."
+      />
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
 
         {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border mb-24"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-16 md:mb-20"
         >
           {stats.map((stat) => {
             const Icon = stat.icon;
             return (
-              <div key={stat.label} className="bg-background p-8 text-center">
+              <div key={stat.label} className="rounded-2xl border border-border bg-afm-white p-8 text-center shadow-sm">
                 <Icon className="w-5 h-5 text-primary mx-auto mb-3" />
                 <p className="font-serif text-4xl mb-1">{stat.value}</p>
                 <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium">{stat.label}</p>
@@ -63,14 +41,14 @@ export default function Assemblies() {
         </motion.div>
 
         {/* Assembly Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 md:mb-20">
           {assemblies.map((assembly, i) => (
             <motion.div
               key={assembly.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="group border border-border bg-card hover:border-primary transition-all duration-300 flex flex-col"
+              className="group flex flex-col rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-md"
             >
               <Link href={`/assemblies/${assembly.slug}`}>
                 <div className="aspect-[4/3] overflow-hidden relative">
@@ -79,10 +57,10 @@ export default function Assemblies() {
                     alt={assembly.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-afm-navy/75 via-afm-navy/10 to-transparent" />
                   <div className="absolute bottom-4 left-4">
-                    <p className="text-white font-serif text-xl">{assembly.name}</p>
-                    <p className="text-white/70 text-xs font-light italic">{assembly.tagline}</p>
+                    <p className="text-afm-white font-semibold text-xl">{assembly.name}</p>
+                    <p className="text-afm-white/80 text-xs font-light italic">{assembly.tagline}</p>
                   </div>
                 </div>
                 <div className="p-6 flex-1 flex flex-col">

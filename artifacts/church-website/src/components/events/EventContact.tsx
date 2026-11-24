@@ -3,8 +3,8 @@ import { Phone, Mail, MessageCircle } from "lucide-react";
 import type { Event } from "@workspace/api-client-react";
 
 export function EventContact({ event }: { event: Event }) {
-  const { contactPhone, contactEmail, contactWhatsapp, organizer } = event;
-  if (!contactPhone && !contactEmail && !contactWhatsapp && !organizer) return null;
+  const { contactName, contactPhone, contactEmail, contactWhatsapp, organizer } = event;
+  if (!contactName && !contactPhone && !contactEmail && !contactWhatsapp && !organizer) return null;
 
   return (
     <motion.section
@@ -14,12 +14,12 @@ export function EventContact({ event }: { event: Event }) {
     >
       <h2 className="font-serif text-3xl md:text-4xl mb-8">Contact</h2>
       <div className="border border-border bg-card p-6 sm:p-8 flex flex-col gap-4">
-        {organizer && (
+        {(contactName || organizer) && (
           <p className="font-light">
             <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground mr-2">
               Organizer
             </span>
-            {organizer}
+            {contactName || organizer}
           </p>
         )}
         {contactPhone && (

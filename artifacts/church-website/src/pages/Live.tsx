@@ -1,37 +1,44 @@
+import { PageHero } from "../components/PageHero";
+
 export default function Live() {
   return (
-    <div className="min-h-screen bg-background text-foreground pt-32 pb-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-8 h-[calc(100vh-200px)] min-h-[600px]">
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        eyebrow="Live Now"
+        title="Service begins at 10:00 AM EST"
+        description="Sunday Worship Experience"
+      />
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
+        <div className="flex min-h-[520px] flex-col gap-6 lg:h-[calc(100vh-360px)] lg:flex-row">
           {/* Main Video Area */}
-          <div className="flex-1 bg-black relative flex flex-col border border-border">
+          <div className="relative flex flex-1 flex-col overflow-hidden rounded-2xl border border-border bg-afm-white shadow-sm">
             <div className="absolute top-6 left-6 z-10 flex items-center gap-3">
-              <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-              <span className="text-white font-medium tracking-widest uppercase text-sm drop-shadow-md">Live Now</span>
+              <div className="w-3 h-3 bg-afm-red rounded-full animate-pulse"></div>
+              <span className="text-afm-red font-semibold tracking-widest uppercase text-sm">Live Now</span>
             </div>
             
             <div className="flex-1 flex items-center justify-center">
-              <div className="text-center text-white/50 space-y-4">
-                <p className="font-serif text-3xl">Streaming Soon Please be patient  thank you for understanding</p>
+              <div className="text-center text-afm-navy/80 space-y-4">
+                <p className="font-serif text-3xl">Service begins at 10:00 AM EST</p>
                 <p className="font-light tracking-widest uppercase text-sm">Sunday Worship Experience</p>
               </div>
             </div>
             
             {/* Controls Placeholder */}
-            <div className="h-16 border-t border-white/10 flex items-center justify-between px-6">
-              <div className="flex gap-4 text-white/50">
+            <div className="h-16 border-t border-border flex items-center justify-between px-6">
+              <div className="flex gap-4 text-afm-navy/65">
                 <span>▶</span>
                 <span>Volume</span>
                 <span>00:00:00 / Live</span>
               </div>
-              <div className="text-white/50">
+              <div className="text-afm-navy/65">
                 <span>Fullscreen</span>
               </div>
             </div>
           </div>
 
           {/* Sidebar Chat / Schedule */}
-          <div className="w-full lg:w-96 flex flex-col border border-border bg-card">
+          <div className="w-full rounded-2xl border border-border bg-card shadow-sm lg:w-96 flex flex-col">
             <div className="p-6 border-b border-border">
               <h3 className="font-medium tracking-widest uppercase text-sm">Live Chat</h3>
             </div>
@@ -50,7 +57,7 @@ export default function Live() {
                 type="text" 
                 placeholder="Type a message..." 
                 disabled
-                className="w-full bg-background border border-border px-4 py-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"
+                className="w-full rounded-2xl bg-afm-white border border-border px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-afm-gold disabled:opacity-50"
               />
             </div>
           </div>

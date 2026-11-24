@@ -4,7 +4,9 @@ import type { Event } from "@workspace/api-client-react";
 import { getGoogleMapsUrl } from "../../lib/event-utils";
 
 export function EventLocation({ event }: { event: Event }) {
-  const directionsUrl = event.mapUrl || getGoogleMapsUrl(event.address, event.location);
+  const locationName = event.locationName || event.location;
+  const address = event.locationAddress || event.address;
+  const directionsUrl = event.locationMapUrl || event.mapUrl || getGoogleMapsUrl(address, locationName);
 
   return (
     <motion.section
@@ -14,8 +16,8 @@ export function EventLocation({ event }: { event: Event }) {
     >
       <h2 className="font-serif text-3xl md:text-4xl mb-8">Location</h2>
       <div className="border border-border bg-card p-6 sm:p-8">
-        <h3 className="font-serif text-2xl mb-2">{event.location}</h3>
-        {event.address && <p className="text-muted-foreground font-light mb-4">{event.address}</p>}
+        <h3 className="font-serif text-2xl mb-2">{locationName}</h3>
+        {address && <p className="text-muted-foreground font-light mb-4">{address}</p>}
         {event.parkingInfo && (
           <p className="text-sm font-light text-muted-foreground mb-6">
             <span className="font-medium text-foreground">Parking: </span>

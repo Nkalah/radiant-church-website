@@ -26,9 +26,9 @@ export function EventSpeaker({ event }: { event: Event }) {
         </div>
         <div>
           <h3 className="font-serif text-2xl mb-1">{event.speakerName}</h3>
-          {event.speakerRole && (
+          {(event.speakerTitle || event.speakerRole) && (
             <p className="text-xs font-medium tracking-widest uppercase text-primary mb-4">
-              {event.speakerRole}
+              {event.speakerTitle || event.speakerRole}
             </p>
           )}
           {event.speakerBio && (

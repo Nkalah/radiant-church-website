@@ -12,6 +12,7 @@ import { MinisterInfoGrid } from "../components/minister-profile/MinisterInfoGri
 import { GallerySection } from "../components/minister-profile/GallerySection";
 import { EventsTimeline } from "../components/minister-profile/EventsTimeline";
 import { ContactSection } from "../components/minister-profile/ContactSection";
+import { PageHero } from "../components/PageHero";
 
 export default function MinisterProfile() {
   const { id } = useParams<{ id: string }>();
@@ -21,16 +22,14 @@ export default function MinisterProfile() {
 
   if (!minister) {
     return (
-      <div className="pt-32 pb-24 min-h-screen bg-background text-foreground">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h1 className="font-serif text-4xl mb-4">Minister Not Found</h1>
-          <p className="text-muted-foreground font-light mb-8">
-            We couldn't find a profile for that minister.
-          </p>
-          <Link
-            href="/ministries"
-            className="uppercase tracking-widest text-xs font-medium text-primary"
-          >
+      <div className="site-page min-h-screen bg-background text-foreground">
+        <PageHero
+          align="center"
+          title="Minister Not Found"
+          description="We couldn't find a profile for that minister."
+        />
+        <div className="py-10 text-center">
+          <Link href="/ministries" className="rounded-full text-xs font-semibold uppercase tracking-wider text-primary">
             ← Back to Ministries
           </Link>
         </div>
@@ -39,23 +38,23 @@ export default function MinisterProfile() {
   }
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-background text-foreground">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mb-10"
-        >
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        eyebrow={minister.category}
+        title={minister.leader}
+        description={`${minister.name}${minister.assembly ? ` · ${minister.assembly}` : ""}${minister.meetingTime ? ` · ${minister.meetingTime}` : ""}`}
+      >
           <Link
             href="/ministries"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+            className="inline-flex items-center gap-2 rounded-full border border-afm-navy/15 bg-afm-white px-4 py-2 text-xs font-semibold uppercase tracking-wider text-afm-navy shadow-sm transition hover:border-afm-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afm-gold"
           >
             <ArrowLeft className="w-3.5 h-3.5" strokeWidth={1.5} />
             Back to Ministries
           </Link>
-        </motion.div>
+      </PageHero>
 
-        <div className="space-y-20 md:space-y-28">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+        <div className="space-y-12 md:space-y-16">
           <MinisterHeader minister={minister} />
 
           <MinisterBiography bio={minister.bio} />
@@ -85,7 +84,7 @@ export default function MinisterProfile() {
               viewport={{ once: true, margin: "-80px" }}
               className="text-center max-w-4xl mx-auto py-8"
             >
-              <p className="font-serif text-3xl md:text-5xl leading-snug text-foreground/90">
+              <p className="text-2xl md:text-4xl font-semibold leading-snug text-foreground/90">
                 "{minister.quote}"
               </p>
             </motion.div>

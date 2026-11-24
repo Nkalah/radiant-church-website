@@ -1,78 +1,84 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useSubmitContact } from "@workspace/api-client-react";
 import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { PageHero } from "../components/PageHero";
+
+const contactSchema = z.object({
+  name: z.string().min(2, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().optional(),
+  subject: z.string().optional(),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
 
 export default function Contact() {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
+  const submitContact = useSubmitContact();
+
+  const form = useForm<z.infer<typeof contactSchema>>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+    },
   });
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      toast({ title: "Error", description: "Please fill in all required fields.", variant: "destructive" });
-      return;
-    }
-    setIsSubmitting(true);
-    try {
-      const form = e.currentTarget;
-      const data = new FormData(form);
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
-      });
-      toast({ title: "Message Sent", description: "We'll get back to you as soon as possible." });
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-    } catch {
-      toast({ title: "Error", description: "Failed to send message. Please try again.", variant: "destructive" });
-    } finally {
-      setIsSubmitting(false);
-    }
+  function onSubmit(values: z.infer<typeof contactSchema>) {
+    submitContact.mutate(
+      { data: values },
+      {
+        onSuccess: () => {
+          toast({
+            title: "Message Sent",
+            description: "We'll get back to you as soon as possible.",
+          });
+          form.reset();
+        },
+        onError: () => {
+          toast({
+            title: "Error",
+            description: "Failed to send message. Please try again.",
+            variant: "destructive",
+          });
+        },
+      }
+    );
   }
 
   return (
-    <div className="pt-32 pb-32 min-h-screen bg-background text-foreground">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        eyebrow="Connect"
+        title="Get in Touch"
+        description="Whether you have a question about our services, ministries, or simply want to connect, we'd love to hear from you."
+      />
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
-            <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">Connect</span>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="font-serif text-5xl md:text-7xl mb-8 leading-tight"
-            >
-              Get in Touch
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-muted-foreground text-lg font-light leading-relaxed mb-12"
-            >
-              Whether you have a question about our services, ministries, or simply want to connect, we'd love to hear from you.
-            </motion.p>
-
-            <div className="space-y-12">
+            <div className="space-y-8">
               <div>
                 <h3 className="text-xs font-medium tracking-widest uppercase mb-4 text-primary">Location</h3>
-                <p className="font-serif text-2xl mb-2">Shiloh Auditorium</p>
+                <p className="font-serif text-2xl mb-2">AFM Cathedral</p>
                 <p className="text-muted-foreground font-light leading-relaxed">
-                  Law gate, Maheru<br />
-                  Near Pizza Hut Restaurant
+                  1200 Sanctuary Avenue<br/>
+                  Metropolis, NY 10001
                 </p>
               </div>
 
@@ -81,27 +87,19 @@ export default function Contact() {
                 <div className="space-y-2">
                   <p className="flex justify-between max-w-xs border-b border-border pb-2">
                     <span className="font-light text-muted-foreground">Sunday Morning</span>
-                    <span className="font-mono">10:00 AM & 13:30 PM</span>
+                    <span className="font-mono">9:00 AM & 11:30 AM</span>
                   </p>
                   <p className="flex justify-between max-w-xs border-b border-border pb-2">
-                    <span className="font-light text-muted-foreground">Monday Cell Groups</span>
-                    <span className="font-mono">18:30 PM</span>
-                  </p>
-                  <p className="flex justify-between max-w-xs border-b border-border pb-2">
-                    <span className="font-light text-muted-foreground">Wednesday Intercession</span>
-                    <span className="font-mono">18:30 PM</span>
-                  </p>
-                  <p className="flex justify-between max-w-xs border-b border-border pb-2">
-                    <span className="font-light text-muted-foreground">Thursday Youth Fellowship</span>
-                    <span className="font-mono">18:30 PM</span>
+                    <span className="font-light text-muted-foreground">Wednesday Night</span>
+                    <span className="font-mono">7:00 PM</span>
                   </p>
                 </div>
               </div>
 
               <div>
                 <h3 className="text-xs font-medium tracking-widest uppercase mb-4 text-primary">Contact Info</h3>
-                <p className="text-muted-foreground font-light mb-1">Afminternational@gmail.com</p>
-                <p className="text-muted-foreground font-light">+263 78 312 9701</p>
+                <p className="text-muted-foreground font-light mb-1">hello@afmchurch.com</p>
+                <p className="text-muted-foreground font-light">(555) 123-4567</p>
               </div>
             </div>
           </div>
@@ -110,83 +108,94 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="p-8 md:p-12 border border-border bg-card h-fit"
+            className="h-fit rounded-2xl border border-border bg-card p-8 shadow-sm md:p-12"
           >
             <h3 className="text-2xl font-serif mb-8">Send a Message</h3>
-            <form
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              onSubmit={handleSubmit}
-              className="space-y-6"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-              <input type="hidden" name="bot-field" />
-
-              <div>
-                <label className="text-xs tracking-widest uppercase block mb-2">Name *</label>
-                <Input
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
                   name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="rounded-none border-border bg-transparent focus-visible:ring-1 focus-visible:ring-primary h-12"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs tracking-widest uppercase">Name</FormLabel>
+                      <FormControl>
+                        <Input className="h-12" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="text-xs tracking-widest uppercase block mb-2">Email *</label>
-                  <Input
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
                     name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="rounded-none border-border bg-transparent focus-visible:ring-1 focus-visible:ring-primary h-12"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-xs tracking-widest uppercase">Email</FormLabel>
+                        <FormControl>
+                          <Input type="email" className="h-12" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-                <div>
-                  <label className="text-xs tracking-widest uppercase block mb-2">Phone (Optional)</label>
-                  <Input
+                  <FormField
+                    control={form.control}
                     name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="rounded-none border-border bg-transparent focus-visible:ring-1 focus-visible:ring-primary h-12"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-xs tracking-widest uppercase">Phone (Optional)</FormLabel>
+                        <FormControl>
+                          <Input className="h-12" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
                 </div>
-              </div>
 
-              <div>
-                <label className="text-xs tracking-widest uppercase block mb-2">Subject (Optional)</label>
-                <Input
+                <FormField
+                  control={form.control}
                   name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="rounded-none border-border bg-transparent focus-visible:ring-1 focus-visible:ring-primary h-12"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs tracking-widest uppercase">Subject (Optional)</FormLabel>
+                      <FormControl>
+                        <Input className="h-12" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              <div>
-                <label className="text-xs tracking-widest uppercase block mb-2">Message *</label>
-                <Textarea
+                <FormField
+                  control={form.control}
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="min-h-[120px] resize-none rounded-none border-border bg-transparent focus-visible:ring-1 focus-visible:ring-primary"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs tracking-widest uppercase">Message</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          className="min-h-[120px] resize-none"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              <Button
-                type="submit"
-                className="w-full h-14 rounded-none uppercase tracking-widest text-sm font-medium mt-4"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
+                <Button
+                  type="submit"
+                  className="w-full h-14 uppercase tracking-widest text-sm font-medium mt-4"
+                  disabled={submitContact.isPending}
+                >
+                  {submitContact.isPending ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
+            </Form>
           </motion.div>
         </div>
       </div>

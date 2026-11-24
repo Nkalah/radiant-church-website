@@ -1,20 +1,17 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { PageHero } from "../components/PageHero";
 
 export default function About() {
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-background text-foreground">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        eyebrow="Our Story"
+        title={<>Created for <span className="text-afm-red">Connection</span></>}
+      />
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20 mb-16 md:mb-20">
           <div>
-            <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">Our Story</span>
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="font-serif text-5xl md:text-7xl mb-8 leading-tight"
-            >
-              Created for <br/><span className="text-muted-foreground italic">Connection</span>
-            </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -53,11 +50,11 @@ At AFM Church India, everyone is welcome to grow in faith, experience the presen
           </div>
         </div>
 
-        <div className="mb-32">
+        <div className="mb-16 md:mb-20">
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl">Our Values</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div className="p-8 border border-border bg-card">
               <h3 className="font-serif text-2xl mb-4 text-primary">Reverence</h3>
               <p className="text-muted-foreground font-light leading-relaxed">Approaching the divine with awe, intention, and quiet respect in a noisy world.</p>
@@ -78,7 +75,7 @@ At AFM Church India, everyone is welcome to grow in faith, experience the presen
             <img 
               src="mom.jpg"
               alt="Lead Pastor" 
-              className="w-full h-full object-cover grayscale"
+              className="w-full h-full object-cover grayscale-0 md:grayscale"
             />
           </div>
           <div className="order-1 lg:order-2">

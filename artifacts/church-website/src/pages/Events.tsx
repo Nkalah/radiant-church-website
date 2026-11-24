@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { useMemo, useState } from "react";
 import { useListEvents } from "@workspace/api-client-react";
+import { PageHero } from "../components/PageHero";
 
 const FALLBACK_IMAGE = "/images/event-1.png";
 
@@ -30,33 +31,20 @@ export default function Events() {
     : events.filter((e) => e.category === activeCategory);
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-background text-foreground">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-20">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-5xl md:text-7xl mb-6"
-          >
-            Gatherings
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-lg font-light max-w-2xl leading-relaxed"
-          >
-            Where our community connects, grows, and serves together. Find your place here.
-          </motion.p>
-        </div>
+    <div className="site-page min-h-screen bg-background text-foreground">
+      <PageHero
+        title="Gatherings"
+        description="Where our community connects, grows, and serves together. Find your place here."
+      />
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
 
         <div className="flex gap-4 mb-12 overflow-x-auto pb-4 scrollbar-hide">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`text-xs uppercase tracking-widest font-medium px-6 py-2 border whitespace-nowrap transition-colors
-                ${activeCategory === category ? "bg-foreground text-background border-foreground" : "border-border hover:bg-accent/10"}`}
+              className={`rounded-full text-xs uppercase tracking-widest font-semibold px-5 py-2.5 border whitespace-nowrap transition-colors
+                ${activeCategory === category ? "bg-afm-navy text-afm-white border-afm-navy" : "border-border bg-afm-white text-afm-navy hover:border-afm-gold hover:bg-afm-gold/10"}`}
             >
               {category}
             </button>
@@ -70,7 +58,7 @@ export default function Events() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="group cursor-pointer border border-border bg-card hover:border-primary transition-colors flex flex-col"
+              className="group cursor-pointer overflow-hidden rounded-2xl border border-border bg-card shadow-sm hover:border-primary hover:shadow-md transition-all flex flex-col"
             >
               <Link href={`/events/${event.id}`}>
                 <div className="aspect-[4/3] overflow-hidden relative">
@@ -82,7 +70,7 @@ export default function Events() {
                     }}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute top-4 left-4 bg-background/80 backdrop-blur text-foreground text-xs uppercase tracking-widest px-3 py-1 font-medium">
+                  <div className="absolute top-4 left-4 rounded-full bg-afm-white/90 backdrop-blur text-afm-navy text-xs uppercase tracking-widest px-3 py-1.5 font-semibold">
                     {event.category}
                   </div>
                 </div>

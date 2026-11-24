@@ -259,7 +259,7 @@ export const ministriesData: Minister[] = [
     meetingTime: "JALANDAR",
     description:
       "We take the gospel beyond the four walls of the church, serving our community and partnering with missionaries around the world.",
-    imageUrl: "/nathan.jpg",
+    imageUrl: "/images/MINISTER NATHANIEL.jpeg",
     bio: "Minister Nathaniel is an anointed teacher of the Word with a passion for seeing every believer grow to spiritual maturity. He planted the Peniel Assembly with a small group of committed believers, naming it after the place where Jacob wrestled with God, because he wanted the congregation to be a people who pursue God wholeheartedly, even through struggle.\n\nHis calling came during a season of personal wrestling with God, where he found that surrender, not certainty, was the beginning of real faith. That experience still shapes the way he teaches and pastors today.\n\nHe leads Peniel with an emphasis on both depth in the Word and outward-facing service, believing a church that only looks inward eventually stagnates. Under his leadership the assembly has become known for its community partnerships as much as its teaching.\n\nHis passion is to see believers who wrestle honestly with God and come out the other side transformed — not performing faith, but living it.",
     quote: "Called to carry the Gospel beyond boundaries, planting churches and raising disciples.",
     vision: "To build a community that pursues God with wholehearted devotion, in worship and in service.",
@@ -284,7 +284,7 @@ export const ministriesData: Minister[] = [
     state: "Punjab",
     email: "peniel@afmindia.org",
     phone: "+263 7746 12846",
-    languages: ["English", "Hindi", "Punjabi"],
+    languages: ["English", "Shona"],
     galleryImages: ["/nathan.jpg", "/peniel1.9.jpg", "/peniel1.4.jpg", "/peniel1.6.jpg"],
     recentEvents: [
       { year: "2026", title: "Peniel Anniversary Service" },
@@ -301,7 +301,7 @@ export const ministriesData: Minister[] = [
     meetingTime: "CHANDIGARH",
     description:
       "Dedicated intercessors who cover the church, its members, and the nations in prayer. All are welcome to join our weekly prayer gatherings.",
-    imageUrl: "/nyasha.jpg",
+    imageUrl: "/images/MINISTER NYASHA.jpeg",
     bio: "Minister Nyasha is a passionate evangelist who believes God wants to pour out His Spirit on all flesh in this generation. He planted Rehoboth Assembly with that conviction as its foundation, naming it after the 'broad places' of Genesis because he believed God still makes room for every soul to encounter Him.\n\nHis calling into ministry began in intercession — long nights of prayer that shaped both his theology and his temperament. That prayer-first posture remains the defining mark of his leadership today.\n\nHe leads Rehoboth with an emphasis on intercession and expectant faith, training a growing team of intercessors who cover the church, its members, and the nations in prayer.\n\nHis passion is to see a generation that prays without ceasing, believing that revival is birthed on its knees before it is ever seen on a stage.",
     quote: "God has made room for us, and He continues to expand His work.",
     vision: "To be a house of prayer where God continually makes room for every soul to encounter Him.",
@@ -325,7 +325,7 @@ export const ministriesData: Minister[] = [
     state: "Punjab",
     email: "rehoboth@afmindia.org",
     phone: "+91 98765 43214",
-    languages: ["English", "Hindi"],
+    languages: ["English", "Shona"],
     galleryImages: ["/nyasha.jpg", "/nyasha1.jpg", "/reho01.jpg", "/reho08.jpg"],
     recentEvents: [
       { year: "2026", title: "National Prayer Gathering" },
@@ -342,7 +342,7 @@ export const ministriesData: Minister[] = [
     meetingTime: "GREATER NOIDA",
     description:
       "Called by God, chosen to serve, and commissioned to proclaim the Gospel — we exist to bring hope, transform lives, and advance the Kingdom of Christ.",
-    imageUrl: "/faith.jpg",
+    imageUrl: "/images/MINISTER FAITH 2.jpeg",
     bio: "Minister Faith brings a heart of compassion and a gift for building community wherever she ministers. She planted Koinonia Assembly around a simple idea — that fellowship, not just teaching, is where lasting transformation happens.\n\nHer calling grew out of her own experience of isolation early in her walk with Christ, and the healing she found once she was welcomed into real community. She has spent her ministry making sure no one else has to find that community by accident.\n\nShe leads Koinonia with warmth and intentionality, prioritizing relationships alongside sound teaching, and has built a congregation known for the closeness of its fellowship.\n\nHer passion is to keep building spaces where people are truly known — believing that a church which feels like family will always outlast one that merely feels like an event.",
     quote: "Called by God, chosen to serve, commissioned to proclaim the Gospel.",
     vision: "To build authentic community rooted in love, prayer, and the Word.",
@@ -383,7 +383,7 @@ export const ministriesData: Minister[] = [
     meetingTime: "PUNJAB",
     description:
       "We are not merely leaders of a congregation; we are servants of Christ, called to carry His Word, nurture His people, and fulfill the Great Commission by making disciples and shining His light in the world.",
-    imageUrl: "/abide.jpg",
+    imageUrl: "/images/MINISTER ABIDE OG.jpeg",
     bio: "Minister Abide carries a deep burden for revival and leads Shiloh Assembly with prophetic vision and pastoral care. The assembly's name — Shiloh, meaning 'place of rest' — reflects his conviction that God's presence, not programs, should be the center of every gathering.\n\nHis calling was marked early by a hunger for God's presence that set the tone for his entire ministry. He describes his early years in ministry as learning to wait on God before learning to lead people, a discipline that still anchors him.\n\nHe leads Shiloh with a strong emphasis on worship and the manifest presence of God, believing that a congregation that truly encounters God in worship will naturally overflow into disciplined, purposeful living.\n\nHis passion is to see a people so saturated in God's presence that carrying His Word and nurturing His people becomes second nature, not obligation.",
     quote: "Called to carry His Word, nurture His people, and fulfill the Great Commission.",
     vision: "To be a house of prayer and worship where believers encounter the tangible presence of God.",
@@ -424,7 +424,7 @@ export const ministriesData: Minister[] = [
     meetingTime: "JALANDAR",
     description:
       "Called to serve the people with integrity, wisdom, and dedication, working toward progress, unity, and a better future for all.",
-    imageUrl: "/tine.jpg",
+    imageUrl: "/images/MINISTER TIME OG.jpeg",
     bio: "Minister Tine oversees the Punjab state ministry with a conviction that faithful, behind-the-scenes coordination is what allows individual assemblies to thrive. His role rarely puts him at the center of attention, and that suits him well.\n\nHis calling into state-level ministry grew out of years serving as a local church leader, where he saw firsthand how much churches benefit from being connected rather than isolated. That experience shaped his commitment to unity across Punjab's assemblies.\n\nHe leads with integrity and consistency, showing up for churches large and small with the same level of care, and working to make sure every assembly in the state feels resourced and supported.\n\nHis passion is progress that doesn't come at the cost of unity — believing the state's assemblies grow strongest when they grow together.",
     quote: "Called to serve with integrity, wisdom, and dedication.",
     vision: "To see every assembly in Punjab resourced, connected, and moving forward together.",
@@ -465,7 +465,7 @@ export const ministriesData: Minister[] = [
     meetingTime: "GREATER NOIDA",
     description:
       "Leadership is not about position; it is about responsibility, service, and creating meaningful change for the people.",
-    imageUrl: "/kayla.jpg",
+    imageUrl: "/images/MINISTER KAYLA 2.jpeg",
     bio: "Minister Kayla oversees the Haryana state ministry with a leadership style rooted in service rather than status. She came into the role after years of grassroots ministry, and that background still shapes how closely she stays connected to individual congregations.\n\nHer calling into state leadership wasn't something she pursued — it was something she was asked to step into after years of quietly serving wherever she was needed. That posture of responsibility over recognition remains her defining trait.\n\nShe leads with a hands-on approach, regularly visiting assemblies across Haryana rather than governing from a distance, and prioritizes practical support over administrative oversight.\n\nHer passion is creating meaningful, lasting change for the people she serves — measured not in titles held, but in churches strengthened.",
     quote: "Leadership is not about position; it is about responsibility and service.",
     vision: "To see meaningful, lasting change take root in every community across Haryana.",
@@ -506,8 +506,50 @@ export const ministriesData: Minister[] = [
     meetingTime: "PENEIL",
     description:
       "Called to carry the Gospel beyond boundaries, planting churches, raising disciples, and establishing communities where people encounter Christ and discover His purpose.",
-    imageUrl: "/isaac.jpg",
+    imageUrl: "/images/MINISTER ISAAC.jpeg",
     bio: "Minister Isaac leads the missions arm of the church with a conviction that the Gospel was never meant to stay within familiar borders. His own calling was confirmed on a short-term mission trip early in his walk with Christ, an experience that redirected the entire course of his ministry.\n\nSince then he has focused on planting new churches in unreached areas, training local believers to lead rather than relying on outside leadership long-term. He sees sustainability, not just outreach, as the true measure of a mission's success.\n\nHe leads missions teams with a balance of boldness and patience — willing to go to difficult places, but committed to doing the slow work of raising indigenous leadership rather than seeking quick results.\n\nHis passion remains constant: to see communities established where people not only hear the Gospel once, but encounter Christ and discover His purpose for their lives over the long term.",
+    quote: "Called to carry the Gospel beyond boundaries, planting churches and raising disciples.",
+    vision: "To establish Christ-centered communities in every place the Gospel has yet to reach.",
+    mission: [
+      "Plant churches in unreached areas",
+      "Raise indigenous disciples and leaders",
+      "Establish sustainable communities of faith",
+      "Advance God's Kingdom",
+    ],
+    responsibilities: [
+      "Evangelism",
+      "Church Planting",
+      "Leadership Development",
+      "Community Outreach",
+    ],
+    favoriteScripture:
+      "Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.",
+    scriptureReference: "Matthew 28:19–20",
+    yearsInMinistry: 1,
+    assembly: "Peniel Assembly",
+    state: "Punjab",
+    email: "missions@afmindia.org",
+    phone: "+91 98765 00013",
+    languages: ["English", "Shona"],
+    galleryImages: ["/isaac.jpg", "/peniel1.3.jpg", "/peniel1.5.jpg", "/peniel1.6.jpg"],
+    recentEvents: [
+      { year: "2026", title: "Missions Sending Conference" },
+      { year: "2025", title: "Church Planting Mission" },
+      { year: "2024", title: "New Fields Survey Trip" },
+    ],
+    socialLinks: {},
+  },
+
+{
+    id: 13,
+    name: "Leader of Philadephia",
+    category: "Preceeding Minister",
+    leader: "Minister Bertha",
+    meetingTime: "Philadephia",
+    description:
+      "Called to carry the Gospel beyond boundaries, planting churches, raising disciples, and establishing communities where people encounter Christ and discover His purpose.",
+    imageUrl: "/images/MINISTER BERTHA.jpeg",
+    bio: "Minister Bertha leads the missions arm of the church with a conviction that the Gospel was never meant to stay within familiar borders. His own calling was confirmed on a short-term mission trip early in his walk with Christ, an experience that redirected the entire course of his ministry.\n\nSince then he has focused on planting new churches in unreached areas, training local believers to lead rather than relying on outside leadership long-term. He sees sustainability, not just outreach, as the true measure of a mission's success.\n\nHe leads missions teams with a balance of boldness and patience — willing to go to difficult places, but committed to doing the slow work of raising indigenous leadership rather than seeking quick results.\n\nHis passion remains constant: to see communities established where people not only hear the Gospel once, but encounter Christ and discover His purpose for their lives over the long term.",
     quote: "Called to carry the Gospel beyond boundaries, planting churches and raising disciples.",
     vision: "To establish Christ-centered communities in every place the Gospel has yet to reach.",
     mission: [
