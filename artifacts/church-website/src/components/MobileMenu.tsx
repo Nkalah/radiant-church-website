@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import { Link } from "wouter";
-import { LOGO_URL, navLinks } from "./navigation";
+import { eventLinks, LOGO_URL, navLinks } from "./navigation";
 
 type MobileMenuProps = {
   open: boolean;
@@ -18,10 +18,35 @@ const extraLinks = [
 
 export function MobileMenu({ open, location, onClose }: MobileMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
-  const links = [...navLinks, ...extraLinks];
+  const [eventsExpanded, setEventsExpanded] = useState(false);
+  const isActive = (href: string) =>
+    location === href || (href !== "/" && location.startsWith(`${href}/`));
+  const isEventsActive = eventLinks.some((link) => isActive(link.href));
+
+  const renderLink = (link: (typeof navLinks)[number] | (typeof extraLinks)[number], nested = false) => (
+    <li key={link.href}>
+      <Link
+        href={link.href}
+        aria-current={isActive(link.href) ? "page" : undefined}
+        onClick={onClose}
+        className={`flex min-h-14 items-center rounded-2xl px-5 text-sm font-bold uppercase tracking-[0.16em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afm-gold ${
+          nested
+            ? "ml-4 border-l border-afm-navy/10 pl-5 text-xs tracking-[0.12em]"
+            : isActive(link.href)
+              ? "bg-afm-gold/20 text-afm-navy ring-1 ring-inset ring-afm-gold/40"
+              : "text-afm-navy/80 hover:bg-afm-white hover:text-afm-red"
+        }`}
+      >
+        {link.label}
+      </Link>
+    </li>
+  );
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      setEventsExpanded(false);
+      return;
+    }
 
     const previousFocus = document.activeElement instanceof HTMLElement
       ? document.activeElement
@@ -109,27 +134,36 @@ export function MobileMenu({ open, location, onClose }: MobileMenuProps) {
 
           <nav aria-label="Main navigation" className="min-h-0 flex-1 overflow-y-auto">
             <ul className="space-y-1">
-              {links.map((link) => {
-                const isActive = location === link.href
-                  || (link.href !== "/" && location.startsWith(`${link.href}/`));
+              {navLinks.slice(0, 2).map((link) => renderLink(link))}
 
-                return (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      aria-current={isActive ? "page" : undefined}
-                      onClick={onClose}
-                      className={`flex min-h-14 items-center rounded-2xl px-5 text-sm font-bold uppercase tracking-[0.16em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afm-gold ${
-                        isActive
-                          ? "bg-afm-gold/20 text-afm-navy ring-1 ring-inset ring-afm-gold/40"
-                          : "text-afm-navy/80 hover:bg-afm-white hover:text-afm-red"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                );
-              })}
+              <li>
+                <button
+                  type="button"
+                  aria-expanded={eventsExpanded}
+                  aria-controls="mobile-events-links"
+                  onClick={() => setEventsExpanded((expanded) => !expanded)}
+                  className={`flex min-h-14 w-full items-center justify-between rounded-2xl px-5 text-sm font-bold uppercase tracking-[0.16em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afm-gold ${
+                    isEventsActive
+                      ? "bg-afm-gold/20 text-afm-navy ring-1 ring-inset ring-afm-gold/40"
+                      : "text-afm-navy/80 hover:bg-afm-white hover:text-afm-red"
+                  }`}
+                >
+                  Events
+                  <ChevronDown
+                    aria-hidden="true"
+                    size={18}
+                    className={`transition-transform duration-200 ${eventsExpanded ? "rotate-180" : ""}`}
+                  />
+                </button>
+                {eventsExpanded && (
+                  <ul id="mobile-events-links" className="mt-1 space-y-1">
+                    {eventLinks.map((link) => renderLink(link, true))}
+                  </ul>
+                )}
+              </li>
+
+              {navLinks.slice(2).map((link) => renderLink(link))}
+              {extraLinks.map((link) => renderLink(link))}
             </ul>
           </nav>
 

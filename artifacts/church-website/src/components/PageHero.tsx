@@ -60,6 +60,7 @@ export function SectionHeading({
 
 type PageHeroProps = SectionHeadingProps & {
   image?: string;
+  video?: string;
   imageFallback?: string;
   imageAlt?: string;
   meta?: ReactNode;
@@ -69,6 +70,7 @@ type PageHeroProps = SectionHeadingProps & {
 
 export function PageHero({
   image,
+  video,
   imageFallback,
   imageAlt = "",
   meta,
@@ -76,15 +78,27 @@ export function PageHero({
   className,
   ...heading
 }: PageHeroProps) {
-  const inverted = Boolean(image);
+  const hasBackgroundMedia = Boolean(image || video);
+  const inverted = hasBackgroundMedia;
 
   return (
     <section className={cn(
       "relative isolate overflow-hidden border-b border-border",
-      image ? "bg-afm-navy py-12 sm:py-16" : "bg-afm-off-white py-10 sm:py-14",
+      hasBackgroundMedia ? "bg-afm-navy py-12 sm:py-16" : "bg-afm-off-white py-10 sm:py-14",
       className,
     )}>
-      {image && (
+      {video ? (
+        <video
+          src={video}
+          aria-hidden="true"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      ) : image ? (
         <>
           <img
             src={image}
@@ -97,8 +111,17 @@ export function PageHero({
             }}
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-afm-navy/90 via-afm-navy/75 to-afm-navy/55" />
         </>
+      ) : null}
+      {hasBackgroundMedia && (
+        <div
+          className={cn(
+            "absolute inset-0 bg-gradient-to-r",
+            video
+              ? "from-afm-navy/90 via-afm-navy/60 to-afm-navy/15"
+              : "from-afm-navy/90 via-afm-navy/75 to-afm-navy/55",
+          )}
+        />
       )}
       <Container className="relative">
         {children && <div className="mb-5">{children}</div>}

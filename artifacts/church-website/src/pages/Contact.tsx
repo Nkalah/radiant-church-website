@@ -75,10 +75,10 @@ export default function Contact() {
             <div className="space-y-8">
               <div>
                 <h3 className="text-xs font-medium tracking-widest uppercase mb-4 text-primary">Location</h3>
-                <p className="font-serif text-2xl mb-2">AFM Cathedral</p>
+                <p className="font-serif text-2xl mb-2">AFM Auditorium</p>
                 <p className="text-muted-foreground font-light leading-relaxed">
-                  1200 Sanctuary Avenue<br/>
-                  Metropolis, NY 10001
+                  Jalandar , Punjab , India<br/>
+                  Maheru, Lawgate Jalandhar, Punjab 144001
                 </p>
               </div>
 
@@ -87,19 +87,19 @@ export default function Contact() {
                 <div className="space-y-2">
                   <p className="flex justify-between max-w-xs border-b border-border pb-2">
                     <span className="font-light text-muted-foreground">Sunday Morning</span>
-                    <span className="font-mono">9:00 AM & 11:30 AM</span>
+                    <span className="font-mono">10:00 AM & 13:30 PM</span>
                   </p>
                   <p className="flex justify-between max-w-xs border-b border-border pb-2">
                     <span className="font-light text-muted-foreground">Wednesday Night</span>
-                    <span className="font-mono">7:00 PM</span>
+                    <span className="font-mono">18:30 PM</span>
                   </p>
                 </div>
               </div>
 
               <div>
                 <h3 className="text-xs font-medium tracking-widest uppercase mb-4 text-primary">Contact Info</h3>
-                <p className="text-muted-foreground font-light mb-1">hello@afmchurch.com</p>
-                <p className="text-muted-foreground font-light">(555) 123-4567</p>
+                <p className="text-muted-foreground font-light mb-1">harrychimbota@gmail.com</p>
+                <p className="text-muted-foreground font-light">(+91) 7901765936</p>
               </div>
             </div>
           </div>

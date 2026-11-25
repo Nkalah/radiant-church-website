@@ -202,7 +202,7 @@ export function HeroCarousel() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-x-0 top-4 z-10 flex justify-end px-4 sm:px-8 md:top-6 md:px-10">
+      <div className="absolute inset-x-0 top-20 z-10 flex justify-end px-4 sm:px-8 md:top-24 md:px-10">
         <button
           type="button"
           aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}

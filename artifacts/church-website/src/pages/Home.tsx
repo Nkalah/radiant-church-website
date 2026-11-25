@@ -7,6 +7,7 @@ import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { QuickLinks } from "@/components/QuickLinks";
+import { ExpansionMap } from "@/components/ExpansionMap";
 import { 
   useGetChurchStats, 
   useGetFeaturedSermon, 
@@ -291,6 +292,7 @@ export default function Home() {
           </form>
         </div>
       </section>
+      <ExpansionMap />
     </main>
   );
 }

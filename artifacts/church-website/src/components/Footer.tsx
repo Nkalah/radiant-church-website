@@ -1,7 +1,9 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { LOGO_URL } from "./navigation";
 
 export function Footer() {
+  const [location] = useLocation();
+
   return (
     <footer className="bg-afm-navy px-6 py-16 text-afm-white md:py-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -42,6 +44,30 @@ export function Footer() {
           </ul>
         </div>
       </div>
+
+      {location === "/" && (
+        <p className="mx-auto mt-10 max-w-7xl text-center text-[10px] leading-relaxed text-afm-white/55">
+          India state boundaries adapted from{" "}
+          <a
+            href="https://github.com/datameet/maps/tree/master/States"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-2 hover:text-afm-gold"
+          >
+            DataMeet India Maps
+          </a>
+          , licensed under{" "}
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-2 hover:text-afm-gold"
+          >
+            CC BY 4.0
+          </a>
+          .
+        </p>
+      )}
       
       <div className="mx-auto mt-16 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-afm-white/15 pt-8 text-xs uppercase tracking-widest text-afm-white/70 md:mt-20 md:flex-row">
         <p>© {new Date().getFullYear()} AFM In India. All rights reserved.</p>

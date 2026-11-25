@@ -55,7 +55,7 @@ export const assemblies: Assembly[] = [
         name: "Minister Chiwara",
         position: "Preceeding Minister",
         bio: "Minister carries a deep burden for revival and leads the assembly with prophetic vision and pastoral care.",
-        photo: "/abide.jpg",
+        photo: "/images/MINISTER ABIDE OG.jpeg",
       },
     ],
     serviceTimes: [
@@ -97,7 +97,7 @@ export const assemblies: Assembly[] = [
         name: "Minister Bertha",
         position: "Preceeding Minister",
         bio: "Minster  has served the Lord faithfully for over a decade, leading with a heart for evangelism and discipleship.",
-        photo: "/bertha.jpg",
+        photo: "/images/MINISTER BERTHA.jpeg",
       },
       
     ],
@@ -139,8 +139,8 @@ export const assemblies: Assembly[] = [
       {
         name: "Nathaniel",
         position: "Preceeding Minister",
-        bio: "Pastor Emmanuel is an anointed teacher of the Word with a passion for seeing every believer grow to spiritual maturity.",
-        photo: "/nath.jpg",
+        bio: "MInister Nathaniel is an anointed teacher of the Word with a passion for seeing every believer grow to spiritual maturity.",
+        photo: "/images/MINISTER NATHANIEL.jpeg",
       },
     ],
     serviceTimes: [
@@ -180,8 +180,8 @@ export const assemblies: Assembly[] = [
       {
         name: "Nyashadzashe Chibwe ",
         position: "Precceeding Minister",
-        bio: "Pastor Andrew is a passionate evangelist who believes God wants to pour out His Spirit on all flesh in this generation.",
-        photo: "/nyasha.jpg",
+        bio: "Minister Nyasha is a passionate evangelist who believes God wants to pour out His Spirit on all flesh in this generation.",
+        photo: "/images/MINISTER NYASHA.jpeg",
       },
     ],
     serviceTimes: [
@@ -222,7 +222,7 @@ export const assemblies: Assembly[] = [
         name: "Faith ",
         position: "Preceeding Minister",
         bio: "Minister brings a heart of compassion and a gift for building community wherever he ministers.",
-        photo: "/faith.jpg",
+        photo: "/images/MINISTER FAITH 1.jpeg",
       },
     ],
     serviceTimes: [
@@ -253,7 +253,7 @@ export const assemblies: Assembly[] = [
     slug: "Bethel;",
     name: "Bethel Assembly",
     tagline: "House Of God",
-    description: "Bethel acob slept at this location while fleeing from his brother Esau and saw a vision of a ladder or stairway reaching to heaven with angels ascending and descending. He named the place Bethel because he felt it was the gate of heaven.",
+    description: "Bethel Jacob slept at this location while fleeing from his brother Esau and saw a vision of a ladder or stairway reaching to heaven with angels ascending and descending. He named the place Bethel because he felt it was the gate of heaven.",
     location: "Limda, Waghodia, Vadodara, Gujarat, India",
     address: " Vadodara , near Parul University Fusion cinema",
     phone: ". +91 81417 66854",
@@ -284,6 +284,49 @@ export const assemblies: Assembly[] = [
     ],
     gallery: [
       "/ko.jpg",
+      "/ko1.jpg",
+      "/ko07.jpg",
+      "/ko05.jpg",
+    ],
+  },
+  
+
+{
+    id: "7",
+    slug: "Salem;",
+    name: "Salem Assembly",
+    tagline: "Peace",
+    description: "Salem is an ancient place name tied to peace, most notably the city ruled by Melchizedek. It comes from the Hebrew root šālēm (related to shalom), meaning whole, complete, or peace,",
+    location: "Khanna, DBU University, Punjab, India",
+    address: " Vadodara , near Parul University Fusion cinema",
+    phone: ". +91 81417 66854",
+    email: "bethel@afmindia.org",
+    established: "18 July 2026",
+    heroImage: "/bethel.jpeg",
+    cardImage: "/bethel.jpeg",
+    leaders: [
+      {
+        name: "Isaac ",
+        position: "Preceeding Minister",
+        bio: "Minister brings a heart of compassion and a gift for building community wherever he ministers.",
+        photo: "/images/MINISTER ISAAC.jpeg",
+      },
+    ],
+    serviceTimes: [
+      { day: "Sunday", name: "Morning Worship", time: "10:00 AM" },
+      { day: "Wednesday", name: "Midweek Service", time: "18:30 PM" },
+      { day: "Friday", name: "Bible Study", time: "18:00 PM" },
+      { day: "Saturday", name: "Youth Fellowship", time: "16:00 PM" },
+    ],
+    ministries: [
+      { name: "Youth Ministry", description: "A generation on fire for God.", icon: "Users" },
+      { name: "Women's Fellowship", description: "Virtuous women growing together in Christ.", icon: "Heart" },
+      { name: "Men's Fellowship", description: "Kingdom men standing firm in faith.", icon: "Shield" },
+      { name: "Praise Team", description: "Songs of praise that usher in God's presence.", icon: "Music" },
+      { name: "Evangelism Team", description: "Sharing the love of Christ in our communities.", icon: "Globe" },
+    ],
+    gallery: [
+      "/IMAGES/",
       "/ko1.jpg",
       "/ko07.jpg",
       "/ko05.jpg",

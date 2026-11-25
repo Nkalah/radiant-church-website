@@ -20,7 +20,7 @@ import Contact from "./pages/Contact";
 import Media from "./pages/Media";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
-import History from "./pages/History";   // ← ADD THIS
+import History from "./History";
 import NotFound from "@/pages/not-found";
 import Assemblies from "./pages/Assemblies";
 import AssemblyDetail from "./pages/AssemblyDetail";

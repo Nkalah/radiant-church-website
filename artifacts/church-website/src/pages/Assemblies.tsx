@@ -5,9 +5,9 @@ import { assemblies } from "./assemblies-data";
 import { PageHero } from "../components/PageHero";
 
 const stats = [
-  { label: "Assemblies", value: "6", icon: Church },
+  { label: "Assemblies", value: "7", icon: Church },
   { label: "Members", value: "500+", icon: Users },
-  { label: "Ministries", value: "20+", icon: Heart },
+  { label: "Ministers", value: "13", icon: Heart },
   { label: "Cities Reached", value: "5+", icon: Globe },
 ];
 
@@ -17,7 +17,7 @@ export default function Assemblies() {
       <PageHero
         eyebrow="AFM India"
         title="Our Assemblies"
-        description="Five communities, one mission — proclaiming the Gospel of Jesus Christ across Punjab and beyond. Find the assembly nearest to you."
+        description="Seven communities, one mission — proclaiming the Gospel of Jesus Christ across Punjab and beyond. Find the assembly nearest to you."
       />
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
 

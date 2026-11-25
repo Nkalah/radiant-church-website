@@ -8,7 +8,35 @@ export default function About() {
       <PageHero
         eyebrow="Our Story"
         title={<>Created for <span className="text-afm-red">Connection</span></>}
+        className="hidden sm:block"
       />
+      <section
+        aria-label="About the Apostolic Faith Mission in India"
+        className="relative isolate overflow-hidden border-b border-border bg-afm-navy sm:hidden"
+      >
+        <div className="absolute -right-16 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full border border-afm-white/35 bg-afm-white p-1.5 shadow-xl">
+          <img
+            src="/afm-carousel-logo.png"
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full rounded-full object-cover"
+          />
+        </div>
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-afm-navy via-afm-navy/95 to-afm-navy/20"
+        />
+        <div className="relative mx-auto flex min-h-[15rem] max-w-7xl items-center px-4 py-10">
+          <div className="max-w-[58%]">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-afm-gold">
+              Our Story
+            </p>
+            <h1 className="font-display text-3xl font-semibold leading-tight text-afm-white">
+              Created for <span className="text-afm-gold">Connection</span>
+            </h1>
+          </div>
+        </div>
+      </section>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20 mb-16 md:mb-20">
           <div>
@@ -40,13 +68,13 @@ At AFM Church India, everyone is welcome to grow in faith, experience the presen
              
             </motion.p>
           </div>
-          <div className="relative aspect-[4/5]">
+          <div className="relative mx-auto hidden aspect-square w-full max-w-[32rem] place-items-center overflow-hidden border border-afm-navy/10 bg-white p-5 shadow-sm sm:grid sm:p-8">
             <img 
-              src="afm.jpg" 
-              alt="Church Interior" 
-              className="w-full h-full object-cover"
+              src="/afm.jpg"
+              alt="Apostolic Faith Mission in India logo"
+              className="h-full w-full object-contain"
             />
-            <div className="absolute inset-0 ring-1 ring-inset ring-border/20 pointer-events-none"></div>
+            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-afm-navy/10"></div>
           </div>
         </div>
 
