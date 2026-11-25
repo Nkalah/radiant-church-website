@@ -57,12 +57,15 @@ function Router() {
   );
 }
 
-function App() {
+function App({ initialLocation }: { initialLocation?: string } = {}) {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <TooltipProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+          <WouterRouter
+            base={import.meta.env.BASE_URL.replace(/\/$/, "")}
+            ssrPath={initialLocation}
+          >
             <Router />
           </WouterRouter>
           <Toaster />

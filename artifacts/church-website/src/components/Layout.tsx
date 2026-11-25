@@ -1,18 +1,23 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { motion } from "framer-motion";
 import { useLocation } from "wouter";
+import { SeoMetadata } from "./SeoMetadata";
 
 export function Layout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
+  const previousLocation = useRef(location);
 
   useEffect(() => {
+    if (previousLocation.current === location) return;
+    previousLocation.current = location;
     window.scrollTo(0, 0);
   }, [location]);
 
   return (
     <div className="min-h-[100dvh] flex flex-col">
+      <SeoMetadata />
       <Navbar />
       <motion.div
         key={location}

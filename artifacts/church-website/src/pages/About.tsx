@@ -1,38 +1,34 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { PageHero } from "../components/PageHero";
 
 export default function About() {
   return (
     <div className="site-page min-h-screen bg-background text-foreground">
-      <PageHero
-        eyebrow="Our Story"
-        title={<>Created for <span className="text-afm-red">Connection</span></>}
-        className="hidden sm:block"
-      />
       <section
         aria-label="About the Apostolic Faith Mission in India"
-        className="relative isolate overflow-hidden border-b border-border bg-afm-navy sm:hidden"
+        className="relative isolate overflow-hidden border-b border-border bg-afm-navy sm:bg-afm-off-white sm:py-14"
       >
-        <div className="absolute -right-16 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full border border-afm-white/35 bg-afm-white p-1.5 shadow-xl">
+        <div className="absolute -right-16 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full border border-afm-white/35 bg-afm-white p-1.5 shadow-xl sm:hidden">
           <img
             src="/afm-carousel-logo.png"
             alt=""
             aria-hidden="true"
+            width={768}
+            height={768}
             className="h-full w-full rounded-full object-cover"
           />
         </div>
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-afm-navy via-afm-navy/95 to-afm-navy/20"
+          className="absolute inset-0 bg-gradient-to-r from-afm-navy via-afm-navy/95 to-afm-navy/20 sm:hidden"
         />
-        <div className="relative mx-auto flex min-h-[15rem] max-w-7xl items-center px-4 py-10">
-          <div className="max-w-[58%]">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-afm-gold">
+        <div className="relative mx-auto flex min-h-[15rem] max-w-7xl items-center px-4 py-10 sm:min-h-0 sm:block sm:px-6 sm:py-0 lg:px-8">
+          <div className="max-w-[58%] sm:max-w-3xl sm:pt-8 md:pt-10">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-afm-gold sm:text-afm-red">
               Our Story
             </p>
-            <h1 className="font-display text-3xl font-semibold leading-tight text-afm-white">
-              Created for <span className="text-afm-gold">Connection</span>
+            <h1 className="font-display text-3xl font-semibold leading-tight text-afm-white sm:font-bold sm:tracking-tight sm:text-afm-navy sm:text-4xl md:text-5xl">
+              Created for <span className="text-afm-gold sm:text-afm-red">Connection</span>
             </h1>
           </div>
         </div>
@@ -72,6 +68,8 @@ At AFM Church India, everyone is welcome to grow in faith, experience the presen
             <img 
               src="/afm.jpg"
               alt="Apostolic Faith Mission in India logo"
+              width={2048}
+              height={2048}
               className="h-full w-full object-contain"
             />
             <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-afm-navy/10"></div>
@@ -102,7 +100,7 @@ At AFM Church India, everyone is welcome to grow in faith, experience the presen
           <div className="order-2 lg:order-1 relative aspect-square lg:aspect-[4/5] max-w-md mx-auto w-full">
             <img 
               src="mom.jpg"
-              alt="Lead Pastor" 
+              alt="Pastor B. Makunda, AFM India leader"
               className="w-full h-full object-cover grayscale-0 md:grayscale"
             />
           </div>

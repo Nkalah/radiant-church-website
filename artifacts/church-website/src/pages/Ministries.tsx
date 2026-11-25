@@ -63,7 +63,10 @@ function MinisterCard({
         <div className="aspect-square w-full shrink-0 overflow-hidden rounded-2xl bg-muted sm:w-40">
           <img
             src={minister.imageUrl || `/images/ministry-${(index % 3) + 1}.png`}
-            alt={minister.leader}
+            alt={`${minister.leader}, ${minister.name} at AFM India`}
+            width={600}
+            height={600}
+            loading="lazy"
             className={`h-full w-full object-cover ${getPortraitPositionClass(minister)} transition-transform duration-700 group-hover:scale-105 md:grayscale md:group-hover:grayscale-0`}
           />
         </div>
@@ -113,7 +116,10 @@ function CompactMinisterCard({ minister }: { minister: Minister }) {
       <div className="aspect-square w-full overflow-hidden bg-muted">
         <img
           src={minister.imageUrl}
-          alt={minister.leader}
+          alt={`${minister.leader}, ${minister.name} at AFM India`}
+          width={600}
+          height={600}
+          loading="lazy"
           className={`h-full w-full object-cover ${getPortraitPositionClass(minister)} transition-transform duration-500 group-hover:scale-[1.03]`}
         />
       </div>

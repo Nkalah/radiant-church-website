@@ -55,6 +55,9 @@ export default function Assemblies() {
                   <img
                     src={assembly.cardImage}
                     alt={assembly.name}
+                    width={1200}
+                    height={900}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-afm-navy/75 via-afm-navy/10 to-transparent" />
