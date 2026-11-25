@@ -3,6 +3,7 @@ import { Link, useParams } from "wouter";
 import { MapPin, Phone, Mail, Clock, ArrowLeft, Users, Heart, Shield, Star, Music, Globe } from "lucide-react";
 import { assemblies } from "./assemblies-data";
 import { PageHero } from "../components/PageHero";
+import { AssemblyLocationMap } from "../components/AssemblyLocationMap";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Users, Heart, Shield, Star, Music, Globe,
@@ -165,6 +166,8 @@ export default function AssemblyDetail() {
             </div>
           </div>
         </div>
+
+        <AssemblyLocationMap assembly={assembly} />
 
         {/* Back */}
         <div className="mt-16 text-center">

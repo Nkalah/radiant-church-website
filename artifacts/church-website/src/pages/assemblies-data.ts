@@ -17,6 +17,13 @@ export interface Ministry {
   icon: string;
 }
 
+export interface AssemblyMapLocation {
+  state: "Gujarat" | "Haryana" | "Punjab" | "Uttar Pradesh";
+  city: string;
+  x: number;
+  y: number;
+}
+
 export interface Assembly {
   id: string;
   slug: string;
@@ -24,6 +31,7 @@ export interface Assembly {
   tagline: string;
   description: string;
   location: string;
+  mapLocation: AssemblyMapLocation;
   address: string;
   phone: string;
   email: string;
@@ -44,6 +52,7 @@ export const assemblies: Assembly[] = [
     tagline: "Where God's Presence Dwells",
     description: "A house of prayer and worship where believers encounter the tangible presence of God and lives are transformed.",
     location: "Jalandhar, Punjab",
+    mapLocation: { state: "Punjab", city: "Jalandhar", x: 29, y: 21.5 },
     address: "Shiloh auditorium near Pizza world basement, Jalandhar, Punjab 144001",
     phone: "+91 98765 43211",
     email: "shiloh@afmindia.org",
@@ -86,6 +95,7 @@ export const assemblies: Assembly[] = [
     tagline: "The Church of Brotherly Love",
     description: "A vibrant community of believers committed to worship, fellowship, and spreading the love of Christ throughout the region.",
     location: "Dehli, Haryana",
+    mapLocation: { state: "Haryana", city: "Palwal", x: 34, y: 31 },
     address: "Philadelphia Auditorium , Annuparna dhaba, palwal",
     phone: "+91 8059846797",
     email: "philadelphia@afmindia.org",
@@ -129,6 +139,7 @@ export const assemblies: Assembly[] = [
     tagline: "Face to Face with God",
     description: "Named after the place where Jacob wrestled with God, Peniel Assembly is a community that pursues God with wholehearted devotion.",
     location: " Punjab , Jalandar Rama Mandi 144001",
+    mapLocation: { state: "Punjab", city: "Rama Mandi, Jalandhar", x: 29, y: 21.5 },
     address: "Peneil Auditorium near amarpalace , Punjab 143001",
     phone: "+263 7746 12846",
     email: "peniel@afmindia.org",
@@ -170,6 +181,7 @@ export const assemblies: Assembly[] = [
     tagline: "God Has Made Room for Us",
     description: "Rehoboth — meaning 'broad places' — is an assembly where God continues to expand His work and make room for every soul to encounter Him.",
     location: "Bathinda, Punjab",
+    mapLocation: { state: "Punjab", city: "Bathinda", x: 26.5, y: 25 },
     address: "56 Revival Road, Bathinda, Punjab 151001",
     phone: "+91 98765 43214",
     email: "rehoboth@afmindia.org",
@@ -211,6 +223,7 @@ export const assemblies: Assembly[] = [
     tagline: "Fellowship in the Spirit",
     description: "Koinonia means fellowship — and at the heart of this assembly is a deep, authentic community built on love, prayer, and the Word.",
     location: "Delhi, Greater Noida, Uttar Pradesh",
+    mapLocation: { state: "Uttar Pradesh", city: "Greater Noida", x: 34.406, y: 30.044 },
     address: "Supertech Golf Country, Greater Noida, Uttar Pradesh 201308",
     phone: "+263 78099 1610",
     email: "koinonia@afmindia.org",
@@ -255,6 +268,7 @@ export const assemblies: Assembly[] = [
     tagline: "House Of God",
     description: "Bethel Jacob slept at this location while fleeing from his brother Esau and saw a vision of a ladder or stairway reaching to heaven with angels ascending and descending. He named the place Bethel because he felt it was the gate of heaven.",
     location: "Limda, Waghodia, Vadodara, Gujarat, India",
+    mapLocation: { state: "Gujarat", city: "Vadodara", x: 22.4, y: 49 },
     address: " Vadodara , near Parul University Fusion cinema",
     phone: ". +91 81417 66854",
     email: "bethel@afmindia.org",
@@ -298,6 +312,7 @@ export const assemblies: Assembly[] = [
     tagline: "Peace",
     description: "Salem is an ancient place name tied to peace, most notably the city ruled by Melchizedek. It comes from the Hebrew root šālēm (related to shalom), meaning whole, complete, or peace,",
     location: "Khanna, DBU University, Punjab, India",
+    mapLocation: { state: "Punjab", city: "Khanna", x: 30.7, y: 23.7 },
     address: " Vadodara , near Parul University Fusion cinema",
     phone: ". +91 81417 66854",
     email: "bethel@afmindia.org",

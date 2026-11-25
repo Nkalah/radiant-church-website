@@ -74,32 +74,32 @@ export default function Contact() {
           <div>
             <div className="space-y-8">
               <div>
-                <h3 className="text-xs font-medium tracking-widest uppercase mb-4 text-primary">Location</h3>
-                <p className="font-serif text-2xl mb-2">AFM Auditorium</p>
-                <p className="text-muted-foreground font-light leading-relaxed">
+                <h3 className="mb-4 text-base font-bold uppercase tracking-widest text-primary md:text-xs md:font-medium">Location</h3>
+                <p className="mb-2 font-serif text-3xl font-semibold md:text-2xl md:font-normal">AFM Auditorium</p>
+                <p className="text-lg font-semibold leading-relaxed text-foreground md:text-base md:font-light md:text-muted-foreground">
                   Jalandar , Punjab , India<br/>
                   Maheru, Lawgate Jalandhar, Punjab 144001
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xs font-medium tracking-widest uppercase mb-4 text-primary">Service Times</h3>
+                <h3 className="mb-4 text-base font-bold uppercase tracking-widest text-primary md:text-xs md:font-medium">Service Times</h3>
                 <div className="space-y-2">
-                  <p className="flex justify-between max-w-xs border-b border-border pb-2">
-                    <span className="font-light text-muted-foreground">Sunday Morning</span>
-                    <span className="font-mono">10:00 AM & 13:30 PM</span>
+                  <p className="flex max-w-xs flex-col gap-1 border-b border-border pb-3 sm:flex-row sm:justify-between sm:pb-2">
+                    <span className="text-lg font-semibold text-foreground md:text-base md:font-light md:text-muted-foreground">Sunday Morning</span>
+                    <span className="font-mono text-lg font-bold md:text-base md:font-normal">10:00 AM & 13:30 PM</span>
                   </p>
-                  <p className="flex justify-between max-w-xs border-b border-border pb-2">
-                    <span className="font-light text-muted-foreground">Wednesday Night</span>
-                    <span className="font-mono">18:30 PM</span>
+                  <p className="flex max-w-xs flex-col gap-1 border-b border-border pb-3 sm:flex-row sm:justify-between sm:pb-2">
+                    <span className="text-lg font-semibold text-foreground md:text-base md:font-light md:text-muted-foreground">Wednesday Night</span>
+                    <span className="font-mono text-lg font-bold md:text-base md:font-normal">18:30 PM</span>
                   </p>
                 </div>
               </div>
 
               <div>
-                <h3 className="text-xs font-medium tracking-widest uppercase mb-4 text-primary">Contact Info</h3>
-                <p className="text-muted-foreground font-light mb-1">harrychimbota@gmail.com</p>
-                <p className="text-muted-foreground font-light">(+91) 7901765936</p>
+                <h3 className="mb-4 text-base font-bold uppercase tracking-widest text-primary md:text-xs md:font-medium">Contact Info</h3>
+                <p className="mb-1 text-lg font-semibold text-foreground md:text-base md:font-light md:text-muted-foreground">harrychimbota@gmail.com</p>
+                <p className="text-lg font-semibold text-foreground md:text-base md:font-light md:text-muted-foreground">(+91) 7901765936</p>
               </div>
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function Contact() {
             transition={{ delay: 0.2 }}
             className="h-fit rounded-2xl border border-border bg-card p-8 shadow-sm md:p-12"
           >
-            <h3 className="text-2xl font-serif mb-8">Send a Message</h3>
+            <h3 className="mb-8 font-serif text-3xl font-semibold md:text-2xl md:font-normal">Send a Message</h3>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
@@ -118,11 +118,11 @@ export default function Contact() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-xs tracking-widest uppercase">Name</FormLabel>
+                      <FormLabel className="text-base font-bold uppercase tracking-widest md:text-xs md:font-normal">Name</FormLabel>
                       <FormControl>
-                        <Input className="h-12" {...field} />
+                        <Input className="h-12 text-lg font-medium md:text-base md:font-normal" {...field} />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-base font-semibold" />
                     </FormItem>
                   )}
                 />
@@ -133,11 +133,11 @@ export default function Contact() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-xs tracking-widest uppercase">Email</FormLabel>
+                          <FormLabel className="text-base font-bold uppercase tracking-widest md:text-xs md:font-normal">Email</FormLabel>
                         <FormControl>
-                          <Input type="email" className="h-12" {...field} />
+                            <Input type="email" className="h-12 text-lg font-medium md:text-base md:font-normal" {...field} />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-base font-semibold" />
                       </FormItem>
                     )}
                   />
@@ -146,11 +146,11 @@ export default function Contact() {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-xs tracking-widest uppercase">Phone (Optional)</FormLabel>
+                          <FormLabel className="text-base font-bold uppercase tracking-widest md:text-xs md:font-normal">Phone (Optional)</FormLabel>
                         <FormControl>
-                          <Input className="h-12" {...field} />
+                            <Input className="h-12 text-lg font-medium md:text-base md:font-normal" {...field} />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-base font-semibold" />
                       </FormItem>
                     )}
                   />
@@ -161,11 +161,11 @@ export default function Contact() {
                   name="subject"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-xs tracking-widest uppercase">Subject (Optional)</FormLabel>
+                      <FormLabel className="text-base font-bold uppercase tracking-widest md:text-xs md:font-normal">Subject (Optional)</FormLabel>
                       <FormControl>
-                        <Input className="h-12" {...field} />
+                        <Input className="h-12 text-lg font-medium md:text-base md:font-normal" {...field} />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-base font-semibold" />
                     </FormItem>
                   )}
                 />
@@ -175,21 +175,21 @@ export default function Contact() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-xs tracking-widest uppercase">Message</FormLabel>
+                      <FormLabel className="text-base font-bold uppercase tracking-widest md:text-xs md:font-normal">Message</FormLabel>
                       <FormControl>
                         <Textarea
-                          className="min-h-[120px] resize-none"
+                          className="min-h-[120px] resize-none text-lg font-medium md:text-base md:font-normal"
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-base font-semibold" />
                     </FormItem>
                   )}
                 />
 
                 <Button
                   type="submit"
-                  className="w-full h-14 uppercase tracking-widest text-sm font-medium mt-4"
+                  className="mt-4 h-14 w-full text-base font-bold uppercase tracking-widest md:text-sm md:font-medium"
                   disabled={submitContact.isPending}
                 >
                   {submitContact.isPending ? "Sending..." : "Send Message"}

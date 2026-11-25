@@ -123,7 +123,7 @@ export function PageHero({
           )}
         />
       )}
-      <Container className="relative">
+      <Container className="relative pt-8 md:pt-10">
         {children && <div className="mb-5">{children}</div>}
         <SectionHeading {...heading} inverted={inverted} />
         {meta && (

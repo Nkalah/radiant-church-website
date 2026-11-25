@@ -6,7 +6,6 @@ import { eventLinks, LOGO_URL, navLinks } from "./navigation";
 
 export function Navbar() {
   const [location] = useLocation();
-  const isHomePage = location === "/";
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [eventsOpen, setEventsOpen] = useState(false);
@@ -46,12 +45,10 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`${isHomePage ? "fixed inset-x-0 top-0" : "sticky top-0"} z-50 h-16 border-b backdrop-blur-xl transition-all duration-300 md:h-[76px] ${
+        className={`sticky top-0 z-50 -mb-16 h-16 border-b backdrop-blur-xl transition-all duration-300 md:-mb-[76px] md:h-[76px] ${
           isScrolled
             ? "border-afm-navy/10 bg-afm-white/95 shadow-md"
-            : isHomePage
-              ? "border-transparent bg-afm-white/70 shadow-none"
-              : "border-afm-navy/10 bg-afm-white/75 shadow-md"
+            : "border-transparent bg-afm-white/70 shadow-none"
         }`}
       >
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
