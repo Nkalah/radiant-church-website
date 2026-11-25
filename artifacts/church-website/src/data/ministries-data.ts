@@ -541,7 +541,7 @@ export const ministriesData: Minister[] = [
   },
 
 {
-    id: 13,
+    id: 14,
     name: "Leader of Philadephia",
     category: "Preceeding Minister",
     leader: "Minister Bertha",
