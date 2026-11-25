@@ -242,7 +242,7 @@ export const ministriesData: Minister[] = [
     state: "Punjab",
     email: "discipleship@afmindia.org",
     phone: "+91 98765 00006",
-    languages: ["English", "Hindi", "Punjabi"],
+    languages: ["English", "Shona"],
     galleryImages: ["/nkala.jpg", "/reho08.jpg", "/reho02.jpg", "/shiloh05.jpg"],
     recentEvents: [
       { year: "2026", title: "Discipleship Class Graduation" },

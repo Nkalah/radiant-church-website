@@ -37,6 +37,10 @@ function LeadershipSectionHeading({
   );
 }
 
+function getPortraitPositionClass(minister: Minister) {
+  return minister.id === 12 ? "object-[center_80%]" : "object-top";
+}
+
 function MinisterCard({
   minister,
   index,
@@ -60,7 +64,7 @@ function MinisterCard({
           <img
             src={minister.imageUrl || `/images/ministry-${(index % 3) + 1}.png`}
             alt={minister.leader}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 md:grayscale md:group-hover:grayscale-0"
+            className={`h-full w-full object-cover ${getPortraitPositionClass(minister)} transition-transform duration-700 group-hover:scale-105 md:grayscale md:group-hover:grayscale-0`}
           />
         </div>
         <div className="flex-1">
@@ -110,7 +114,7 @@ function CompactMinisterCard({ minister }: { minister: Minister }) {
         <img
           src={minister.imageUrl}
           alt={minister.leader}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className={`h-full w-full object-cover ${getPortraitPositionClass(minister)} transition-transform duration-500 group-hover:scale-[1.03]`}
         />
       </div>
       <div className="flex flex-1 flex-col p-3 sm:p-4">
