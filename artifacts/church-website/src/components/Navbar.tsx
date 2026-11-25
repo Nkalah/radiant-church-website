@@ -6,10 +6,7 @@ import { eventLinks, LOGO_URL, navLinks } from "./navigation";
 
 export function Navbar() {
   const [location] = useLocation();
-  const isHome = location === "/";
-  const [headerMode, setHeaderMode] = useState<"expanded" | "compact" | "hidden">(
-    isHome ? "expanded" : "compact",
-  );
+  const [headerMode, setHeaderMode] = useState<"expanded" | "compact">("expanded");
   const headerModeRef = useRef(headerMode);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [eventsOpen, setEventsOpen] = useState(false);
@@ -19,18 +16,37 @@ export function Navbar() {
     if (headerModeRef.current === mode) return;
     headerModeRef.current = mode;
     setHeaderMode(mode);
-    if (mode === "hidden") setEventsOpen(false);
   }, []);
   const isActive = (href: string) =>
     location === href || (href !== "/" && location.startsWith(`${href}/`));
   const isEventsActive = eventLinks.some((link) => isActive(link.href));
   const isExpanded = headerMode === "expanded";
-  const isHidden = headerMode === "hidden";
-  const navActiveClass = isExpanded
+  const isAboutPage = location === "/about";
+  const hasDarkBanner =
+    location === "/" ||
+    location === "/history" ||
+    location.startsWith("/assemblies/") ||
+    location.startsWith("/events/");
+  const expandedTextClass = hasDarkBanner
+    ? "text-afm-white"
+    : isAboutPage
+      ? "text-afm-white sm:text-afm-navy"
+      : "text-afm-navy";
+  const expandedActiveClass = hasDarkBanner
     ? "bg-afm-white/15 text-afm-white"
+    : isAboutPage
+      ? "max-sm:bg-afm-white/15 max-sm:text-afm-white sm:bg-afm-navy/10 sm:text-afm-red"
+      : "bg-afm-navy/10 text-afm-red";
+  const expandedIdleClass = hasDarkBanner
+    ? "text-afm-white/90 hover:bg-afm-white/15 hover:text-afm-white"
+    : isAboutPage
+      ? "text-afm-white/90 hover:bg-afm-white/15 hover:text-afm-white sm:text-afm-navy/80 sm:hover:bg-afm-navy/5 sm:hover:text-afm-red"
+      : "text-afm-navy/80 hover:bg-afm-navy/5 hover:text-afm-red";
+  const navActiveClass = isExpanded
+    ? expandedActiveClass
     : "bg-afm-gold/15 text-afm-red";
   const navIdleClass = isExpanded
-    ? "text-afm-white/90 hover:bg-afm-white/15 hover:text-afm-white"
+    ? expandedIdleClass
     : "text-afm-navy/80 hover:bg-afm-off-white hover:text-afm-red";
   const headerHeight = isExpanded
     ? "h-[calc(4.5rem+env(safe-area-inset-top))] md:h-[calc(5rem+env(safe-area-inset-top))]"
@@ -52,52 +68,21 @@ export function Navbar() {
   );
 
   useEffect(() => {
-    const topThreshold = 12;
-    const directionThreshold = 8;
-    const hideAfterScroll = 88;
-    let previousY = Math.max(0, window.scrollY);
-    let previousDirection = 0;
-    let accumulatedDelta = 0;
-
-    transitionHeaderTo(
-      previousY <= topThreshold && isHome ? "expanded" : "compact",
-    );
-
-    const handleScroll = () => {
+    const compactThreshold = 24;
+    const expandThreshold = 8;
+    const syncHeaderToScroll = () => {
       const currentY = Math.max(0, window.scrollY);
-      if (currentY <= topThreshold) {
-        previousY = currentY;
-        previousDirection = 0;
-        accumulatedDelta = 0;
-        transitionHeaderTo(isHome ? "expanded" : "compact");
-        return;
-      }
-
-      const delta = currentY - previousY;
-      previousY = currentY;
-      if (delta === 0) return;
-
-      const direction = delta > 0 ? 1 : -1;
-      if (direction !== previousDirection) {
-        previousDirection = direction;
-        accumulatedDelta = delta;
-      } else {
-        accumulatedDelta += delta;
-      }
-
-      if (Math.abs(accumulatedDelta) < directionThreshold) return;
-      accumulatedDelta = 0;
-
-      if (direction < 0) {
+      if (currentY > compactThreshold) {
         transitionHeaderTo("compact");
-      } else {
-        transitionHeaderTo(currentY <= hideAfterScroll ? "compact" : "hidden");
+      } else if (currentY <= expandThreshold) {
+        transitionHeaderTo("expanded");
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHome, transitionHeaderTo]);
+    syncHeaderToScroll();
+    window.addEventListener("scroll", syncHeaderToScroll, { passive: true });
+    return () => window.removeEventListener("scroll", syncHeaderToScroll);
+  }, [transitionHeaderTo]);
 
   useEffect(() => {
     closeMenu();
@@ -107,11 +92,7 @@ export function Navbar() {
   return (
     <>
       <header
-        aria-hidden={isHidden}
-        inert={isHidden}
-        className={`fixed inset-x-0 top-0 z-50 box-border border-b pt-[env(safe-area-inset-top)] transition-[transform,opacity,height,background-color,border-color,box-shadow] duration-300 ease-out ${headerHeight} ${
-          isHidden ? "-translate-y-full pointer-events-none opacity-0" : "translate-y-0 opacity-100"
-        } ${
+        className={`fixed inset-x-0 top-0 z-50 box-border border-b pt-[env(safe-area-inset-top)] transition-[height,background-color,border-color,box-shadow] duration-300 ease-out ${headerHeight} ${
           isExpanded
             ? "border-transparent bg-transparent shadow-none backdrop-blur-none"
             : "border-afm-navy/10 bg-afm-white/95 shadow-sm backdrop-blur-xl"
@@ -121,7 +102,7 @@ export function Navbar() {
           <Link
             href="/"
             className={`flex shrink-0 cursor-pointer items-center gap-2 ${
-              isExpanded ? "text-afm-white" : "text-afm-navy"
+              isExpanded ? expandedTextClass : "text-afm-navy"
             }`}
           >
             <img
@@ -232,7 +213,7 @@ export function Navbar() {
             onClick={() => setMobileMenuOpen(true)}
             className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afm-gold lg:hidden ${
               isExpanded
-                ? "text-afm-white hover:bg-afm-white/15"
+                ? expandedIdleClass
                 : "text-afm-navy hover:bg-afm-off-white"
             }`}
           >

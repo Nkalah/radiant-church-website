@@ -38,7 +38,7 @@ function LeadershipSectionHeading({
 }
 
 function getPortraitPositionClass(minister: Minister) {
-  return minister.id === 12 ? "object-[center_80%]" : "object-top";
+  return minister.id === 12 ? "object-center" : "object-top";
 }
 
 function MinisterCard({
